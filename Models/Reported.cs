@@ -1,4 +1,6 @@
-﻿namespace FogelFormedlingenAB.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FogelFormedlingenAB.Models
 {
     public class Reported
     {
@@ -6,6 +8,7 @@
         public int ReportedByID { get; set; }
         public int? AdID { get; set; }
         public int? AccountID { get; set; }
-        public string Description { get; set; }
+		[MaxLength(500)]
+		public string Description { get; set; }
     }
 }
