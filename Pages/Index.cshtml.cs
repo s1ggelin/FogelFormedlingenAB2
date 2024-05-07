@@ -1,4 +1,5 @@
 ﻿using FogelFormedlingenAB.Data;
+using FogelFormedlingenAB.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,10 +13,11 @@ namespace FogelFormedlingenAB.Pages
         {
             this.database = database;
         }
+		public List<Ad> Ads { get; set; }
 
-        public void OnGet()
+		public void OnGet()
         {
-
+            Ads = database.Ads.ToList();
         }
     }
 }
