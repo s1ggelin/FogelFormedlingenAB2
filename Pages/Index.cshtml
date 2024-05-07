@@ -103,15 +103,12 @@
 						<div class="col">
 							<div class="card shadow-sm">
 								<!-- Placeholder Image -->
-								<img src="~/images/@ad.PictureUrl" alt="@ad.Title"
-									<title>Placeholder</title>
-									<rect width="100%" height="100%" fill="#55595c" />
-									<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-								</img>
+								<h3>@ad.Title</h3>
+								<img src="~/images/@ad.PictureUrl" class="card-img-top" alt="@ad.Title" style="max-width: 220px; height: 225px; object-fit: cover;">
 
 								<div class="card-body">
 									<!-- Card Text (Empty for now) -->
-									<p class="card-text"></p>
+									<p class="card-text">@ad.Description</p>
 
 									<!-- Button Group (Empty for now) -->
 									<div class="d-flex justify-content-between align-items-center">

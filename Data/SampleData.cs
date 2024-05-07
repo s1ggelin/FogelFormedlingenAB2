@@ -60,6 +60,7 @@ namespace FogelFormedlingenAB.Data
 					StartDate = "2024-05-06",
 					EndDate = "2024-06-06"
 				});
+                database.SaveChanges();
 			}
         }
     }
