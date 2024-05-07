@@ -2,42 +2,124 @@
 
 namespace FogelFormedlingenAB.Data
 {
-    public class SampleData
-    {
-        public static void Create(AppDbContext database)
-        {
-            // If there are no fake accounts, add some.
-            string fakeIssuer = "https://example.com";
-            if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
-            {
-                database.Accounts.Add(new Account
-                {
-                    OpenIDIssuer = fakeIssuer,
-                    OpenIDSubject = "1111111111",
-                    Name = "Brad"
-                });
-                database.Accounts.Add(new Account
-                {
-                    OpenIDIssuer = fakeIssuer,
-                    OpenIDSubject = "2222222222",
-                    Name = "Angelina"
-                });
-                database.Accounts.Add(new Account
-                {
-                    OpenIDIssuer = fakeIssuer,
-                    OpenIDSubject = "3333333333",
-                    Name = "Will"
-                });
-            }
+	public class SampleData
+	{
+		public static void Create(AppDbContext database)
+		{
+			// If there are no fake accounts, add some.
+			string fakeIssuer = "https://example.com";
+			if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
+			{
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1111111111",
+					Name = "Brad"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "2222222222",
+					Name = "Angelina"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "3333333333",
+					Name = "Will"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "4444444444",
+					Name = "Frodo"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "5555555555",
+					Name = "Gandalf"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "6666666666",
+					Name = "Aragorn"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "7777777777",
+					Name = "Legolas"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "8888888888",
+					Name = "Gimli"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "9999999999",
+					Name = "Boromir"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1010101010",
+					Name = "Faramir"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1111111111",
+					Name = "Samwise"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1212121212",
+					Name = "Pippin"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1313131313",
+					Name = "Merry"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1414141414",
+					Name = "Sauron"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1515151515",
+					Name = "Saruman"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1616161616",
+					Name = "Galadriel"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1717171717",
+					Name = "Elrond"
+				});
+			}
 
-            database.SaveChanges();
-        }
-    }
-}
-        }
-        public static void CreateAds(AppDbContext database)
-        {
-            if(!database.Ads.Any())
+
+			database.SaveChanges();
+		}
+		public static void CreateAds(AppDbContext database)
+		{
+			if (!database.Ads.Any())
 				database.Ads.Add(new Ad
 				{
 					PictureUrl = "fiskmås-svante.jpg",
@@ -86,16 +168,16 @@ namespace FogelFormedlingenAB.Data
 				StartDate = DateTime.Parse("2024-05-10"),
 			});
 			database.Ads.Add(new Ad
-				{
-					PictureUrl = "placeholder.jpg",
-					Description = "Upptäck spänningen med att äga en rovfågel genom att adoptera en hök idag! Dessa snabba och skickliga jägare är fascinerande att se i aktion.",
-					Category = "Hök",
-					IsActive = true,
-					AccountID = 8,
-					Price = 1800,
-					Title = "Adoptera en Hök - Fångaren av Skyn!",
-					StartDate = DateTime.Parse("2024-05-11"),
-				});
+			{
+				PictureUrl = "placeholder.jpg",
+				Description = "Upptäck spänningen med att äga en rovfågel genom att adoptera en hök idag! Dessa snabba och skickliga jägare är fascinerande att se i aktion.",
+				Category = "Hök",
+				IsActive = true,
+				AccountID = 8,
+				Price = 1800,
+				Title = "Adoptera en Hök - Fångaren av Skyn!",
+				StartDate = DateTime.Parse("2024-05-11"),
+			});
 
 			database.Ads.Add(new Ad
 			{
@@ -301,7 +383,6 @@ namespace FogelFormedlingenAB.Data
 				StartDate = DateTime.Parse("2024-05-28"),
 			});
 			database.SaveChanges();
-			}
-        }
-    }
-
+		}
+	}
+}
