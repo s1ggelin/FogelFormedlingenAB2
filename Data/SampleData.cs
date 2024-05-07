@@ -2,33 +2,118 @@
 
 namespace FogelFormedlingenAB.Data
 {
-    public class SampleData
-    {
-        public static void Create(AppDbContext database)
-        {
-            // If there are no fake accounts, add some.
-            string fakeIssuer = "https://example.com";
-            if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
-            {
-                database.Accounts.Add(new Account
-                {
-                    OpenIDIssuer = fakeIssuer,
-                    OpenIDSubject = "1111111111",
-                    Name = "Brad"
-                });
-                database.Accounts.Add(new Account
-                {
-                    OpenIDIssuer = fakeIssuer,
-                    OpenIDSubject = "2222222222",
-                    Name = "Angelina"
-                });
-                database.Accounts.Add(new Account
-                {
-                    OpenIDIssuer = fakeIssuer,
-                    OpenIDSubject = "3333333333",
-                    Name = "Will"
-                });
-            }
+	public class SampleData
+	{
+		public static void Create(AppDbContext database)
+		{
+			// If there are no fake accounts, add some.
+			string fakeIssuer = "https://example.com";
+			if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
+			{
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1111111111",
+					Name = "Brad"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "2222222222",
+					Name = "Angelina"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "3333333333",
+					Name = "Will"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "4444444444",
+					Name = "Frodo"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "5555555555",
+					Name = "Gandalf"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "6666666666",
+					Name = "Aragorn"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "7777777777",
+					Name = "Legolas"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "8888888888",
+					Name = "Gimli"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "9999999999",
+					Name = "Boromir"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1010101010",
+					Name = "Faramir"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1111111111",
+					Name = "Samwise"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1212121212",
+					Name = "Pippin"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1313131313",
+					Name = "Merry"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1414141414",
+					Name = "Sauron"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1515151515",
+					Name = "Saruman"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1616161616",
+					Name = "Galadriel"
+				});
+				database.Accounts.Add(new Account
+				{
+					OpenIDIssuer = fakeIssuer,
+					OpenIDSubject = "1717171717",
+					Name = "Elrond"
+				});
+			}
+
 
             database.SaveChanges();
         }
@@ -48,6 +133,7 @@ namespace FogelFormedlingenAB.Data
                     StartDate = "2024-05-06",
                     EndDate = "2024-06-06"
                 });
+
 				database.Ads.Add(new Ad
 				{
 					PictureUrl = "marabou-sven.jpg",
@@ -60,6 +146,7 @@ namespace FogelFormedlingenAB.Data
 					StartDate = "2024-05-06",
 					EndDate = "2024-06-06"
 				});
+              
 				database.Ads.Add(new Ad
 				{
 					PictureUrl = "philippine-eagle.jpg",
@@ -307,4 +394,5 @@ namespace FogelFormedlingenAB.Data
 			}
         }
     }
+
 }
