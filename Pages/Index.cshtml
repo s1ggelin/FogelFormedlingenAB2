@@ -57,8 +57,12 @@
 					<em style="margin-left: 5px;">Hitta din fjäderbeklädda vän hos oss!</em>
 					
 				</a>
-				<a asp-page="/MyAccountPage" class="btn btn-secondary">Mitt Konto</a>
-				</button>
+				<div class="ml-auto">
+					<!-- Use ml-auto to push buttons to the right -->
+					<a asp-page="/MyAccountPage" class="btn btn-secondary mx-2">Mitt Konto</a>
+					<a asp-page="/CreateAd" class="btn btn-secondary mx-2">Lägg till annons</a>
+				</div>
+			
 			</div>
 		</div>
 	</header>
@@ -67,12 +71,7 @@
 
 		<section class="py-5 text-center container">
 			<div class="row py-lg-5">
-				<div class="col-lg-6 col-md-8 mx-auto">
-					<p>
-						<a asp-page="/CreateAd" class="btn btn-primary my-2">Lägg till annons</a>
-						<a href="#" class="btn btn-secondary my-2"></a>
-					</p>
-				</div>
+				@* LÄGG TILL SEARCHBAR HÄR*@
 			</div>
 		</section>
 		@foreach(var ad in Model.Ads)
