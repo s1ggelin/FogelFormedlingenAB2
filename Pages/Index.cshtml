@@ -76,14 +76,22 @@
 							<div class="d-flex justify-content-center">
 
 								<img class="product-img" src="~/images/@ad.PictureUrl" class="card-img-top img-fluid" alt="@ad.Title">
-							</div>
-							<div class="card-body d-flex flex-column">
 
-								<p class="card-text">@ad.Price.ToString("C0")</p>
-								<div class="mt-auto">
+							</div> 
+								<div class="card-body d-flex flex-column">
+									
+									<p class="card-text">@ad.Price.ToString("C0")</p>
+									<div class="mt-auto">
+										
+										<div class="btn-group">
+											<a asp-page="/AdPage" class="btn btn-sm btn-outline-secondary">Visa Fågel</a>
+										@if (ad.AccountID == accessControl.LoggedInAccountID)
+										{
+											<a asp-page="/EditAd" asp-route-id="@ad.ID" class="btn btn-sm btn-outline-primary">Redigera annons</a>
+										}
+										</div>
+										<small class="text-muted">@ad.StartDate</small>
 
-									<div class="btn-group">
-										<a asp-page="/AdPage" class="btn btn-sm btn-outline-secondary">Visa Fågel</a>
 									</div>
 									<small class="text-muted">@ad.StartDate</small>
 								</div>
