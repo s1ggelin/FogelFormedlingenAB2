@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FogelFormedlingenAB.Migrations
 {
-    public partial class initialcommit : Migration
+    public partial class _20240508 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
