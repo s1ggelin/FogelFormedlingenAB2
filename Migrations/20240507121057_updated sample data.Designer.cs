@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240507095506_Added sample data")]
-    partial class Addedsampledata
+    [Migration("20240507121057_updated sample data")]
+    partial class updatedsampledata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
