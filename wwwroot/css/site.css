@@ -1,0 +1,17 @@
+.col-md-4.mb-4 {
+    transition: all 0.2s ease;
+    gap: 30px;
+    text-align: center;
+}
+
+    .col-md-4.mb-4:hover {
+        transform: scale(1.05);
+    }
+
+
+.product-img {
+    text-align:center;
+    width: 95%;
+    height: 240px;
+    border-radius:5px;
+}
