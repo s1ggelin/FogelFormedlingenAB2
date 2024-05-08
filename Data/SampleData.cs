@@ -120,6 +120,7 @@ namespace FogelFormedlingenAB.Data
 		public static void CreateAds(AppDbContext database)
 		{
 			if (!database.Ads.Any())
+			{ 
 				database.Ads.Add(new Ad
 				{
 					PictureUrl = "fiskmås-svante.jpg",
@@ -386,6 +387,6 @@ namespace FogelFormedlingenAB.Data
 		}
 	}
 }
+}
 
 
-      
