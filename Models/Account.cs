@@ -6,13 +6,19 @@ namespace FogelFormedlingenAB.Models
     public class Account
     {
         public int ID { get; set; }
-		public string OpenIDIssuer { get; set; }
-		public string OpenIDSubject { get; set; }
+		public required string OpenIDIssuer { get; set; }
+		public required string OpenIDSubject { get; set; }
 		[MaxLength(25)]
-		public string Name { get; set; }
+		public required string Name { get; set; }
+
 		[MaxLength(20)]
-		public string Phonenumber { get; set; }
+		public required string Phonenumber { get; set; }
 		[MaxLength(50)]
-		public string Email { get; set; }
-    }
+		public required string Email { get; set; }
+
+		public List<Reported>? Reports { get; set; }
+		public List<Favourite>? Favourites { get; set; }
+		public List<Order>? Orders { get; set; }
+		public List<Ad>? Ads { get; set; }
+	}
 }

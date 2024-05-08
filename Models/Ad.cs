@@ -7,16 +7,22 @@ namespace FogelFormedlingenAB.Models
     {
         public int ID { get; set; }
         public int AccountID { get; set; } // AccountID
+		public required Account Account { get; set; }
         public int PictureID { get; set; }
+        public required Image Picture { get; set; }
         public int CategoryID { get; set; }
+        public required Category Category { get; set; }
 		[MaxLength(50)]
-		public string Title { get; set; }
+		public required string Title { get; set; }
 		[MaxLength(500)]
-		public string Description { get; set; }
+		public required string Description { get; set; }
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
         public bool IsActive { get; set; } = true;
 		public DateTime StartDate { get; set; }
+
+        public Order? Order { get; set; }
+        public Favourite? Favourite { get; set; }
 
     }
 }
