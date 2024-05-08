@@ -13,13 +13,45 @@
     @await RenderSectionAsync("Scripts", required: false)
 </head>
 <body>
-    <header>
-        <environment names="Development">
-            @await Component.InvokeAsync(nameof(FakeLoginMenu))
-        </environment>
-    </header>
+
     <main>
+
+		<header>
+
+			<div class="navbar navbar-dark bg-dark shadow-sm">
+				<div class="container">
+					<a href="#" class="navbar-brand d-flex align-items-center">
+						<svg width="40px" height="40px" viewBox="-23.21 0 94.685 94.685" xmlns="http://www.w3.org/2000/svg">
+							<g transform="translate(-350.866 -1093.744)" fill="none" stroke="#ffffff" stroke-width="2">
+								<path d="M387.049,1098.808a1.417,1.417,0,1,0-1.417,1.418A1.417,1.417,0,0,0,387.049,1098.808Z" />
+								<path d="M398.113,1134.961l-11.812,4.653a3.79,3.79,0,0,0-1.591-4.848l2.416-.951,11.537-4.545a.75.75,0,1,0-.55-1.4l-8.5,3.349a25.629,25.629,0,0,0,1.022-6.9,27.948,27.948,0,0,0-2.873-11.872,2.3,2.3,0,0,1,1.041-3.047c.02-.01.04-.021.059-.033.185-.115.377-.249.568-.384a3.192,3.192,0,0,0,1.122-.234v1.4a.751.751,0,0,0,1.158.63,7.685,7.685,0,0,0,3.177-6.3c0-3.553-1.173-4.585-1.727-4.875a7.99,7.99,0,0,0-6.754-5.725c-4.995-.568-8.985.664-12.194,3.764-3.034,2.932-4.9,7.156-6.2,10.579-1.573.987-10.021,7.012-9.623,22.282a44.634,44.634,0,0,0,.469,5.245,57.709,57.709,0,0,0,1.5,7l-9.019,3.553a.75.75,0,0,0,.275,1.448.737.737,0,0,0,.275-.052l9.643-3.8h0l1-.393h0l.012-.005,6.9-2.719a.992.992,0,0,0,.754.025,1.834,1.834,0,1,1,1.281,3.438.931.931,0,0,0-.516,1.414l-19.627,7.731a.75.75,0,0,0,.55,1.4l8.263-3.255-2.962,34.547a2.141,2.141,0,0,0,1.585,2.274,2.231,2.231,0,0,0,.589.081,2.163,2.163,0,0,0,1.954-1.265l13.849-33.47a74.112,74.112,0,0,0,9.521-11.833l13.973-5.5a.75.75,0,1,0-.55-1.4Zm-8.909-27.456a2.719,2.719,0,0,1-1.4-.548v-3.181h0a6.469,6.469,0,0,0,2.252,3.545A1.72,1.72,0,0,1,389.2,1107.505Z" />
+							</g>
+						</svg>
+						<strong style="margin-right: 5px;">FågelFörmedlingen</strong>
+						<em style="margin-left: 5px;">Hitta din fjäderbeklädda vän hos oss!</em>
+
+					</a>
+					<div class="ml-auto">
+						<!-- Use ml-auto to push buttons to the right -->
+						<a asp-page="/MyAccountPage" class="btn btn-secondary mx-2">Mitt Konto</a>
+						<a asp-page="/CreateAd" class="btn btn-secondary mx-2">Lägg till annons</a>
+						<environment names="Development">
+							@await Component.InvokeAsync(nameof(FakeLoginMenu))
+						</environment>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
         @RenderBody()
+		<footer class="text-muted py-5">
+			<div class="container">
+				<p class="float-end mb-1">
+					<a href="#">Back to top</a>
+				</p>
+			</div>
+		</footer>
     </main>
 </body>
 </html>

@@ -1,0 +1,88 @@
+﻿@page
+@model FogelFormedlingenAB.Pages.CreateAdModel
+@inject FogelFormedlingenAB.Data.AccessControl accessControl
+@{
+	ViewData["Title"] = "CreateAd";
+}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+	<meta name="generator" content="Hugo 0.84.0">
+	<title>Album example · Bootstrap v5.0</title>
+
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+
+
+	<!-- Bootstrap core CSS -->
+	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+		}
+
+		@@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
+	</style>
+
+
+</head>
+<body>
+
+
+	<main>
+
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-6 col-md-8 mx-auto">
+					<h1 class="fw-light">Skapa Fågelannons</h1>
+					<p class="lead text-muted">Här skapar du annonser för att sälja dina fåglar.</p>
+					<form method="post">
+						<div class="mb-3">
+							<label for="title" class="form-label">Titel på annons:</label>
+							<input type="text" class="form-control" id="title" name="Title" required>
+						</div>
+						<div class="mb-3">
+							<label for="pictureURL" class="form-label">Länk till fågelbild:</label>
+							<input type="text" class="form-control" id="pictureURL" name="PictureURL" required>
+						</div>
+						<div class="mb-3">
+							<label for="category" class="form-label">Kategori för din fågel:</label>
+							<input type="text" class="form-control" id="category" name="Category" required>
+						</div>
+						<div class="mb-3">
+							<label for="price" class="form-label">Pris på din fågel. Ange i siffervärde enligt format: 666.66:</label>
+							<input type="text" class="form-control" id="price" name="Price" required>
+						</div>
+						<div class="mb-3">
+							<label for="description" class="form-label">Beskrivning av fågel:</label>
+							<textarea class="form-control" id="description" name="Description" rows="3" required></textarea>
+						</div>
+						
+						<button type="submit" class="btn btn-primary">Lägg upp annons</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	
+
+	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
+
