@@ -42,33 +42,41 @@
 </head>
 <body>
 
-	
-
 	<main>
 
-		<section class="py-5 text-center container">
-			<div class="row py-lg-5">
-				<div class="col-lg-6 col-md-8 mx-auto">
-					<p>
-						<a asp-page="/CreateAd" class="btn btn-primary my-2">Lägg till annons</a>
-						
-					</p>
+		<div id="search-form" class="container">
+			<form method="get" action="Index" class="search-form row">
+				<div class="col-md-5">
+					<input type="text" id="searchString" name="searchString" class="form-control" placeholder="Sök på annons:" value="@Model.SearchString">
 				</div>
-			</div>
-		</section>
+				<div class="col-md-4">
+					<select id="category" name="category" class="form-select">
+						<option value="">Alla kategorier</option>
+						@foreach (var category in Model.Categories)
+						{
+							<option value="@category">@category</option>
+						}
+					</select>
+				</div>
+				<div class="col-md-2">
+					<button type="submit" class="btn btn-primary">Sök</button>
+				</div>
+			</form>
+		</div>
 
 		<div class="container">
 			<div class="row justify-content-center">
 				@foreach (var ad in Model.Ads)
 				{
 					<div class="col-md-4 mb-4">
-						
-							<div class="card shadow-sm h-100">
-								
-								<h3 style="text-align:center;">@ad.Title</h3>
+
+						<div class="card shadow-sm h-100">
+
+							<h3 style="text-align:center;">@ad.Title</h3>
 							<div class="d-flex justify-content-center">
-							
+
 								<img class="product-img" src="~/images/@ad.PictureUrl" class="card-img-top img-fluid" alt="@ad.Title">
+
 							</div> 
 								<div class="card-body d-flex flex-column">
 									
@@ -83,22 +91,27 @@
 										}
 										</div>
 										<small class="text-muted">@ad.StartDate</small>
+
 									</div>
+									<small class="text-muted">@ad.StartDate</small>
 								</div>
 							</div>
-						
+						</div>
+
 					</div>
 				}
 			</div>
-			
-		}
+
 		
-
-
-
 	</main>
 
-	
+	<footer class="text-muted py-5">
+		<div class="container">
+			<p class="float-end mb-1">
+				<a href="#">Back to top</a>
+			</p>
+		</div>
+	</footer>
 
 
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

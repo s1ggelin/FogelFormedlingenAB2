@@ -15,3 +15,7 @@
     height: 240px;
     border-radius:5px;
 }
+
+#search-form {
+    padding: 30px;
+}
