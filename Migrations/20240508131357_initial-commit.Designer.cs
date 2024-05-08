@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240508081437_initial-commit")]
+    [Migration("20240508131357_initial-commit")]
     partial class initialcommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

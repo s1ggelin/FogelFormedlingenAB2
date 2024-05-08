@@ -70,12 +70,7 @@ namespace FogelFormedlingenAB.Data
 					OpenIDSubject = "1010101010",
 					Name = "Faramir"
 				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1111111111",
-					Name = "Samwise"
-				});
+				
 				database.Accounts.Add(new Account
 				{
 					OpenIDIssuer = fakeIssuer,
