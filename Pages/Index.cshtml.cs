@@ -39,7 +39,7 @@ namespace FogelFormedlingenAB.Pages
 
 			if (!string.IsNullOrEmpty(category))
 			{
-				adsQuery = adsQuery.Where(p => p.Category.Contains(category));
+				adsQuery = adsQuery.Where(p => p.Category.Name.Contains(category));
 			}
 
 			var totalAds = this.database.Ads.Count();
@@ -59,10 +59,14 @@ namespace FogelFormedlingenAB.Pages
 			.Take(PageSize)
 			.ToList();
 
-			Categories = database.Ads.Select(p => p.Category).Distinct().ToList();
+			Categories = database.Ads.Select(p => p.Category.Name).ToList();
 
 			SearchString = searchString;
 			SearchCategory = category;
 		}
+		public string GetPictureUrl(int id)
+		{
+			return Request.Scheme + "://" + Request.Host + database.Images.Where(i => i.ID == id).Select(i => i.PictureUrl);
+        }
 	}
 }

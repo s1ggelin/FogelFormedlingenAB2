@@ -12,6 +12,7 @@ namespace FogelFormedlingenAB.Data
         public DbSet<Image> Images { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Reported> reports { get; set; }
+		public DbSet<Category> categories { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
@@ -23,6 +24,18 @@ namespace FogelFormedlingenAB.Data
 			modelBuilder.Entity<Reported>()
 				.HasCheckConstraint("CK_MyEntity_OneColumnOnly",
 					"(AccountID IS NOT NULL AND AdID IS NULL) OR (AccountID IS NULL AND AdID IS NOT NULL)");
+
+			modelBuilder.Entity<Favourite>()
+				.HasOne(f => f.Ad)
+				.WithMany()
+				.HasForeignKey(f => f.AdID)
+				.OnDelete(DeleteBehavior.Restrict); // or DeleteBehavior.NoAction
+
+			modelBuilder.Entity<Order>()
+				.HasOne(f => f.Ad)
+				.WithMany()
+				.HasForeignKey(f => f.AdID)
+				.OnDelete(DeleteBehavior.Restrict); // or DeleteBehavior.NoAction
 		}
 		//Automatically adds Timestamp on Ad record creation
 		public override int SaveChanges()
