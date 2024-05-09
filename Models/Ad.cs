@@ -6,6 +6,7 @@ namespace FogelFormedlingenAB.Models
     public class Ad
     {
         public int ID { get; set; }
+
         public int AccountID { get; set; } // AccountID
 		public required Account Account { get; set; }
         public int PictureID { get; set; }
@@ -23,6 +24,5 @@ namespace FogelFormedlingenAB.Models
 
         public Order? Order { get; set; }
         public Favourite? Favourite { get; set; }
-
     }
 }

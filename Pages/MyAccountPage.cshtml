@@ -1,5 +1,70 @@
 ﻿@page
 @model FogelFormedlingenAB.Pages.MyAccountPageModel
+@inject FogelFormedlingenAB.Data.AccessControl AccessControl
 @{
-    @* "My account" page where user can see their own ads and ads they've liked from other users and........ *@
+    ViewData["Title"] = "My Account";
 }
+
+<div class="container">
+    <h1>Welcome, @AccessControl.LoggedInAccountName!</h1>
+
+    <div class="card my-4">
+        <div class="card-body">
+            <h2 class="card-title">Account Details</h2>
+            <p class="card-text">Account ID: @AccessControl.LoggedInAccountID</p>
+        </div>
+    </div>
+
+    <div class="card my-4">
+        <div class="card-body">
+            <h2 class="card-title">My Ads</h2>
+            @if (Model.MyAds.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var ad in Model.MyAds)
+                    {
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <h3>@ad.Title</h3>
+                                <form method="post" asp-page-handler="RemoveAd" asp-route-adId="@ad.ID" )">
+                                    <button type="submit" class="btn btn-danger">Delete Ad</button>
+                                </form>
+                            </div>
+                            <p>@ad.Description</p>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>You do not own any posts yet! Head over to our home page to create one!</p>
+            }
+        </div>
+    </div>
+
+    <div class="card my-4">
+        <div class="card-body">
+            <h2 class="card-title">Ads I've Liked</h2>
+            @if (Model.AdsILiked.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var ad in Model.AdsILiked)
+                    {
+                        <li class="list-group-item">
+                            <h3>@ad.Title</h3>
+                            <p>@ad.Description</p>
+                            <!-- Display other ad details here -->
+                            <form method="post" asp-page-handler="RemoveFromFavorites" asp-route-adId="@ad.ID">
+                                <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>You have not liked any ads!</p>
+            }
+        </div>
+    </div>
+</div>

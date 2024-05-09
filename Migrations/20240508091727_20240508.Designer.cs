@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240503112100_init")]
-    partial class init
+    [Migration("20240508091727_20240508")]
+    partial class _20240508
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,15 +57,14 @@ namespace FogelFormedlingenAB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<int>("AccountID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EndDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -79,12 +78,8 @@ namespace FogelFormedlingenAB.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.Property<int>("SellerID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StartDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()

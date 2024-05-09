@@ -15,9 +15,10 @@ namespace FogelFormedlingenAB.Data
             var user = httpContextAccessor.HttpContext.User;
             string subject = user.FindFirst(ClaimTypes.NameIdentifier).Value;
             string issuer = user.FindFirst(ClaimTypes.NameIdentifier).Issuer;
-
+         
             LoggedInAccountID = db.Accounts.Single(p => p.OpenIDIssuer == issuer && p.OpenIDSubject == subject).ID;
             LoggedInAccountName = user.FindFirst(ClaimTypes.Name).Value;
+
         }
     }
 }

@@ -4,6 +4,7 @@ using FogelFormedlingenAB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240508131357_initial-commit")]
+    partial class initialcommit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,15 +32,9 @@ namespace FogelFormedlingenAB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OpenIDIssuer")
                         .IsRequired()
@@ -47,11 +43,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.Property<string>("OpenIDSubject")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phonenumber")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("ID");
 
@@ -73,19 +64,16 @@ namespace FogelFormedlingenAB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PictureID")
-                        .HasColumnType("int");
+                    b.Property<string>("PictureUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
@@ -95,8 +83,7 @@ namespace FogelFormedlingenAB.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -135,8 +122,7 @@ namespace FogelFormedlingenAB.Migrations
 
                     b.Property<string>("PictureUrl")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -156,9 +142,6 @@ namespace FogelFormedlingenAB.Migrations
 
                     b.Property<int>("AdID")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("BoughtDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -181,8 +164,7 @@ namespace FogelFormedlingenAB.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ReportedByID")
                         .HasColumnType("int");
@@ -190,8 +172,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("reports");
-
-                    b.HasCheckConstraint("CK_MyEntity_OneColumnOnly", "(AccountID IS NOT NULL AND AdID IS NULL) OR (AccountID IS NULL AND AdID IS NOT NULL)");
                 });
 #pragma warning restore 612, 618
         }
