@@ -66,7 +66,7 @@ namespace FogelFormedlingenAB.Pages
 		}
 		public string GetPictureUrl(int id)
 		{
-			return Request.Scheme + "://" + Request.Host + database.Images.Where(i => i.ID == id).Select(i => i.PictureUrl);
+			return Request.Scheme + "://" + Request.Host + "/"+ database.Images.Where(i => i.ID == id).Select(i => i.PictureUrl).FirstOrDefault();
         }
 	}
 }
