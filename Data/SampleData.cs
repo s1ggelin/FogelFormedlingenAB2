@@ -2,386 +2,570 @@
 
 namespace FogelFormedlingenAB.Data
 {
-	public class SampleData
-	{
-		public static void Create(AppDbContext database)
-		{
-			// If there are no fake accounts, add some.
-			string fakeIssuer = "https://example.com";
-			if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
-			{
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1111111111",
-					Name = "Brad"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "2222222222",
-					Name = "Angelina"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "3333333333",
-					Name = "Will"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "4444444444",
-					Name = "Frodo"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "5555555555",
-					Name = "Gandalf"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "6666666666",
-					Name = "Aragorn"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "7777777777",
-					Name = "Legolas"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "8888888888",
-					Name = "Gimli"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "9999999999",
-					Name = "Boromir"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1010101010",
-					Name = "Faramir"
-				});
-				
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1212121212",
-					Name = "Pippin"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1313131313",
-					Name = "Merry"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1414141414",
-					Name = "Sauron"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1515151515",
-					Name = "Saruman"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1616161616",
-					Name = "Galadriel"
-				});
-				database.Accounts.Add(new Account
-				{
-					OpenIDIssuer = fakeIssuer,
-					OpenIDSubject = "1717171717",
-					Name = "Elrond"
-				});
-			}
+    public class SampleData
+    {
+        public static void CreateAccounts(AppDbContext database)
+        {
+            // If there are no fake accounts, add some.
+            string fakeIssuer = "https://example.com";
+            if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
+            {
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1111111111",
+                    Name = "Brad",
+                    Email = "brad@example.com",
+                    Phonenumber = "555-1111-1111"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "2222222222",
+                    Name = "Angelina",
+                    Email = "angelina@example.com",
+                    Phonenumber = "555-2222-2222"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "3333333333",
+                    Name = "Will",
+                    Email = "will@example.com",
+                    Phonenumber = "555-3333-3333"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "4444444444",
+                    Name = "Frodo",
+                    Email = "frodo@example.com",
+                    Phonenumber = "555-4444-4444"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "5555555555",
+                    Name = "Gandalf",
+                    Email = "gandalf@example.com",
+                    Phonenumber = "555-5555-5555"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "6666666666",
+                    Name = "Aragorn",
+                    Email = "aragorn@example.com",
+                    Phonenumber = "555-6666-6666"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "7777777777",
+                    Name = "Legolas",
+                    Email = "legolas@example.com",
+                    Phonenumber = "555-7777-7777"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "8888888888",
+                    Name = "Gimli",
+                    Email = "gimli@example.com",
+                    Phonenumber = "555-8888-8888"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "9999999999",
+                    Name = "Boromir",
+                    Email = "boromir@example.com",
+                    Phonenumber = "555-9999-9999"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1010101010",
+                    Name = "Faramir",
+                    Email = "faramir@example.com",
+                    Phonenumber = "555-1010-1010"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1212121212",
+                    Name = "Pippin",
+                    Email = "pippin@example.com",
+                    Phonenumber = "555-1212-1212"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1313131313",
+                    Name = "Merry",
+                    Email = "merry@example.com",
+                    Phonenumber = "555-1313-1313"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1414141414",
+                    Name = "Sauron",
+                    Email = "sauron@example.com",
+                    Phonenumber = "555-1414-1414"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1515151515",
+                    Name = "Saruman",
+                    Email = "saruman@example.com",
+                    Phonenumber = "555-1515-1515"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1616161616",
+                    Name = "Galadriel",
+                    Email = "galadriel@example.com",
+                    Phonenumber = "555-1616-1616"
+                });
+
+                database.Accounts.Add(new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1717171717",
+                    Name = "Elrond",
+                    Email = "elrond@example.com",
+                    Phonenumber = "555-1717-1717"
+                });
+            }
 
 
-			database.SaveChanges();
-		}
-		public static void CreateAds(AppDbContext database)
-		{
-			if (!database.Ads.Any())
-			{ 
+            database.SaveChanges();
+        }
+        public static void CreateAds(AppDbContext database)
+        {
+            if (!database.Ads.Any())
+            {
+				if (!database.Images.Any())
+                {
+                    for (int i = 0; i <= 22; i++)
+                    {
+                        database.Images.Add(new Image
+                        {
+                            PictureUrl = ""
+                        });
+
+						}
+                    }
+				database.SaveChanges();
+
 				database.Ads.Add(new Ad
-				{
-					PictureUrl = "fiskmås-svante.jpg",
-					Description = "En fin mås jag haft i trädgården. Lyssnar till namnet Svante och äter endast sardiner. Cirka 3 år gammal. Fint skick. BVSA!",
-					Category = "Svensk Fågel",
-					IsActive = true,
-					AccountID = 1,
-					Price = 499,
-					Title = "3 årig fin fiskmås!",
-					StartDate = DateTime.Parse("2024-05-06"),
-				});
+                {
+                    PictureID = 1,
+                    Description = "Adoptera en Hök - Fångaren av Skyn!",
+                    CategoryID = 2,
+                    IsActive = true,
+                    AccountID = 1,
+                    Price = 1800,
+                    Title = "Adoptera en Hök - Fångaren av Skyn!",
+                    StartDate = DateTime.Parse("2024-05-11"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "marabou-sven.jpg",
-				Description = "Dags att sälja min pärla! Sven är en 5-årig marabou-stork. Van vid barn. Säljes pga ändrade livsförhållanden!!",
-				Category = "Utländsk Fågel",
-				IsActive = true,
-				AccountID = 2,
-				Price = 700,
-				Title = "Marabou-Stork söker nytt hem",
-				StartDate = DateTime.Parse("2024-05-06"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 2,
+                    Description = "Adoptera en Svan - Symbol för Kärlek och Skönhet!",
+                    CategoryID = 3,
+                    IsActive = true,
+                    AccountID = 1,
+                    Price = 2500,
+                    Title = "Adoptera en Svan - Symbol för Kärlek och Skönhet!",
+                    StartDate = DateTime.Parse("2024-05-12"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "philippine-eagle.jpg",
-				Description = "Upplev majestätet hos en Philippine Eagle, en symbol för styrka och skönhet. Denna imponerande fågel är nu tillgänglig för en ny ägare som uppskattar dess unika charm och sällsynthet.",
-				Category = "Asiatisk Fågel",
-				IsActive = true,
-				AccountID = 3,
-				Price = 1337,
-				Title = "Unik Philippine Eagle till supererbjudande",
-				StartDate = DateTime.Parse("2024-06-25"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 3,
+                    Description = "Adoptera en Kolibri - Ett Vackert Luftakrobat!",
+                    CategoryID = 4,
+                    IsActive = true,
+                    AccountID = 2,
+                    Price = 1200,
+                    Title = "Adoptera en Kolibri - Ett Vackert Luftakrobat!",
+                    StartDate = DateTime.Parse("2024-05-13"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Ge ditt hem en exotisk touch genom att adoptera en påfågel idag! Dessa vackra och majestätiska fåglar är kända för sina spektakulära fjäderskrudar och eleganta beteende.",
-				Category = "Påfågel",
-				IsActive = true,
-				AccountID = 7,
-				Price = 2000,
-				Title = "Adoptera en Påfågel - Skönhet och Elegans!",
-				StartDate = DateTime.Parse("2024-05-10"),
-			});
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Upptäck spänningen med att äga en rovfågel genom att adoptera en hök idag! Dessa snabba och skickliga jägare är fascinerande att se i aktion.",
-				Category = "Hök",
-				IsActive = true,
-				AccountID = 8,
-				Price = 1800,
-				Title = "Adoptera en Hök - Fångaren av Skyn!",
-				StartDate = DateTime.Parse("2024-05-11"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 4,
+                    Description = "Adoptera en Tukan - Färg och Glädje!",
+                    CategoryID = 5,
+                    IsActive = true,
+                    AccountID = 2,
+                    Price = 1800,
+                    Title = "Adoptera en Tukan - Färg och Glädje!",
+                    StartDate = DateTime.Parse("2024-05-14"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Ge ditt hem en touch av elegans genom att adoptera en svan idag! Dessa anmärkningsvärda fåglar är symboler för kärlek, skönhet och fred.",
-				Category = "Svan",
-				IsActive = true,
-				AccountID = 9,
-				Price = 2500,
-				Title = "Adoptera en Svan - Symbol för Kärlek och Skönhet!",
-				StartDate = DateTime.Parse("2024-05-12"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 5,
+                    Description = "Adoptera en Uggla - Symbol för Visdom och Skydd!",
+                    CategoryID = 6,
+                    IsActive = true,
+                    AccountID = 3,
+                    Price = 1500,
+                    Title = "Adoptera en Uggla - Symbol för Visdom och Skydd!",
+                    StartDate = DateTime.Parse("2024-05-15"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Upptäck skönheten och charmen hos en kolibri genom att adoptera en idag! Dessa små och färgglada fåglar är kända för sin snabbhet och smidighet i luften.",
-				Category = "Kolibri",
-				IsActive = true,
-				AccountID = 10,
-				Price = 1200,
-				Title = "Adoptera en Kolibri - Ett Vackert Luftakrobat!",
-				StartDate = DateTime.Parse("2024-05-13"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 6,
+                    Description = "Adoptera en Papegoja - Kvick och Pratglad!",
+                    CategoryID = 7,
+                    IsActive = true,
+                    AccountID = 3,
+                    Price = 2000,
+                    Title = "Adoptera en Papegoja - Kvick och Pratglad!",
+                    StartDate = DateTime.Parse("2024-05-16"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Förvandla ditt hem till en tropisk oas genom att adoptera en tukan idag! Dessa färgstarka och lekfulla fåglar kommer att föra glädje och färg till ditt liv.",
-				Category = "Tukan",
-				IsActive = true,
-				AccountID = 11,
-				Price = 1800,
-				Title = "Adoptera en Tukan - Färg och Glädje!",
-				StartDate = DateTime.Parse("2024-05-14"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 7,
+                    Description = "Adoptera en Koltrast - Sångens Skönhet!",
+                    CategoryID = 8,
+                    IsActive = true,
+                    AccountID = 4,
+                    Price = 800,
+                    Title = "Adoptera en Koltrast - Sångens Skönhet!",
+                    StartDate = DateTime.Parse("2024-05-17"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Ge ditt hem en touch av mystik genom att adoptera en uggla idag! Dessa lugna och intelligenta fåglar är symboler för visdom och skydd.",
-				Category = "Uggla",
-				IsActive = true,
-				AccountID = 12,
-				Price = 1500,
-				Title = "Adoptera en Uggla - Symbol för Visdom och Skydd!",
-				StartDate = DateTime.Parse("2024-05-15"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 8,
+                    Description = "Adoptera en Flamingo - Elegans och Charm!",
+                    CategoryID = 9,
+                    IsActive = true,
+                    AccountID = 4,
+                    Price = 2200,
+                    Title = "Adoptera en Flamingo - Elegans och Charm!",
+                    StartDate = DateTime.Parse("2024-05-18"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Förvandla ditt hem till en djungel genom att adoptera en papegoja idag! Dessa kvicka och pratglada fåglar kommer att föra liv och energi till ditt hem.",
-				Category = "Papegoja",
-				IsActive = true,
-				AccountID = 13,
-				Price = 2000,
-				Title = "Adoptera en Papegoja - Kvick och Pratglad!",
-				StartDate = DateTime.Parse("2024-05-16"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 9,
+                    Description = "Adoptera en Ara - Färgglad Vän från Tropikerna!",
+                    CategoryID = 10,
+                    IsActive = true,
+                    AccountID = 5,
+                    Price = 1500,
+                    Title = "Adoptera en Ara - Färgglad Vän från Tropikerna!",
+                    StartDate = DateTime.Parse("2024-05-22"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Upptäck skönheten i naturen genom att adoptera en koltrast idag! Dessa sångfåglar är kända för sin vackra sång och eleganta fjäderdräkt.",
-				Category = "Koltrast",
-				IsActive = true,
-				AccountID = 14,
-				Price = 800,
-				Title = "Adoptera en Koltrast - Sångens Skönhet!",
-				StartDate = DateTime.Parse("2024-05-17"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 10,
+                    Description = "Adoptera en Kakadua - Australiens Charm!",
+                    CategoryID = 11,
+                    IsActive = true,
+                    AccountID = 5,
+                    Price = 1200,
+                    Title = "Adoptera en Kakadua - Australiens Charm!",
+                    StartDate = DateTime.Parse("2024-05-23"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Ge ditt hem en touch av exotisk charm genom att adoptera en flamingo idag! Dessa eleganta fåglar är kända för sina långa ben och rosa fjädrar.",
-				Category = "Flamingo",
-				IsActive = true,
-				AccountID = 15,
-				Price = 2200,
-				Title = "Adoptera en Flamingo - Elegans och Charm!",
-				StartDate = DateTime.Parse("2024-05-18"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 11,
+                    Description = "Få en smak av Karibien genom att adoptera en pelikan idag! Dessa storslagna fåglar är kända för sina stora näbbar och förmågan att dyka efter fisk.",
+                    CategoryID = 12,
+                    IsActive = true,
+                    AccountID = 6,
+                    Price = 2500,
+                    Title = "Adoptera en Pelikan - Storslagen Fiskare från Karibien!",
+                    StartDate = DateTime.Parse("2024-05-29"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Förvandla ditt hem till en djungel genom att adoptera en papegoja idag! Dessa kvicka och pratglada fåglar kommer att föra liv och energi till ditt hem.",
-				Category = "Papegoja",
-				IsActive = true,
-				AccountID = 16,
-				Price = 2000,
-				Title = "Adoptera en Papegoja - Kvick och Pratglad!",
-				StartDate = DateTime.Parse("2024-05-19"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 12,
+                    Description = "Få en smak av Afrika genom att adoptera en struts idag! Dessa stolta och snabba löpare är kända för sin elegans och styrka.",
+                    CategoryID = 13,
+                    IsActive = true,
+                    AccountID = 6,
+                    Price = 3000,
+                    Title = "Adoptera en Struts - Elegans och Styrka från Afrika!",
+                    StartDate = DateTime.Parse("2024-05-30"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Ge ditt hem en touch av exotisk charm genom att adoptera en flamingo idag! Dessa eleganta fåglar är kända för sina långa ben och rosa fjädrar.",
-				Category = "Flamingo",
-				IsActive = true,
-				AccountID = 17,
-				Price = 2200,
-				Title = "Adoptera en Flamingo - Elegans och Charm!",
-				StartDate = DateTime.Parse("2024-05-20"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 13,
+                    Description = "Upptäck skönheten i naturen genom att adoptera en fasan idag! Dessa färgglada och imponerande fåglar är perfekta för den som uppskattar en unik och exotisk djurupplevelse.",
+                    CategoryID = 14,
+                    IsActive = true,
+                    AccountID = 7,
+                    Price = 1800,
+                    Title = "Adoptera en Fasan - Färgglad Skönhet från Naturen!",
+                    StartDate = DateTime.Parse("2024-05-31"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Upplev skönheten i naturen genom att adoptera en uggla idag! Ugglor är inte bara symboler för visdom utan också fantastiska jägare och skyddare av naturen.",
-				Category = "Uggla",
-				IsActive = true,
-				AccountID = 18,
-				Price = 1000,
-				Title = "Adoptera en Uggla - En Symbol för Visdom!",
-				StartDate = DateTime.Parse("2024-05-21"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 14,
+                    Description = "Upplev skönheten i naturen genom att adoptera en kondor idag! Dessa storslagna rovfåglar är symboler för kraft och frihet.",
+                    CategoryID = 15,
+                    IsActive = true,
+                    AccountID = 7,
+                    Price = 4000,
+                    Title = "Adoptera en Kondor - Symbol för Kraft och Frihet!",
+                    StartDate = DateTime.Parse("2024-06-01"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Få en smak av tropikerna genom att adoptera en färgglad ara idag! Dessa intelligenta och färgrika fåglar är perfekta sällskapsdjur för den som söker något utöver det vanliga.",
-				Category = "Ara",
-				IsActive = true,
-				AccountID = 19,
-				Price = 1500,
-				Title = "Adoptera en Ara - Färgglad Vän från Tropikerna!",
-				StartDate = DateTime.Parse("2024-05-22"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 15,
+                    Description = "Få en smak av Antarktis genom att adoptera en pingvin idag! Dessa charmiga och sociala fåglar kommer att sprida glädje och skratt i ditt hem.",
+                    CategoryID = 16,
+                    IsActive = true,
+                    AccountID = 8,
+                    Price = 1500,
+                    Title = "Adoptera en Pingvin - Charm och Glädje från Antarktis!",
+                    StartDate = DateTime.Parse("2024-06-02"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Få en smak av Australien genom att adoptera en kakadua idag! Dessa högljudda men charmiga fåglar är kända för sina färgglada fjädrar och lekfulla personligheter.",
-				Category = "Kakadua",
-				IsActive = true,
-				AccountID = 20,
-				Price = 1200,
-				Title = "Adoptera en Kakadua - Australiens Charm!",
-				StartDate = DateTime.Parse("2024-05-23"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 16,
+                    Description = "Upptäck den nordiska mytologin genom att adoptera en valkyria idag! Dessa majestätiska kvinnliga krigare är kända för sin styrka och skönhet.",
+                    CategoryID = 17,
+                    IsActive = true,
+                    AccountID = 8,
+                    Price = 5000,
+                    Title = "Adoptera en Valkyria - Majestätisk Krigare från Nordisk Mytologi!",
+                    StartDate = DateTime.Parse("2024-06-03"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Upplev skönheten i naturen genom att adoptera en koltrast idag! Dessa sångfåglar är kända för sin vackra sång och eleganta fjäderdräkt.",
-				Category = "Koltrast",
-				IsActive = true,
-				AccountID = 21,
-				Price = 800,
-				Title = "Adoptera en Koltrast - Sångens Skönhet!",
-				StartDate = DateTime.Parse("2024-05-24"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 17,
+                    Description = "Få en smak av Amazonas genom att adoptera en toekan idag! Dessa färgglada och livliga fåglar är kända för sina stora näbbar och spektakulära fjädrar.",
+                    CategoryID = 18,
+                    IsActive = true,
+                    AccountID = 9,
+                    Price = 2200,
+                    Title = "Adoptera en Toekan - Färgprakt från Amazonas!",
+                    StartDate = DateTime.Parse("2024-06-04"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Förvandla ditt hem till en tropisk oas genom att adoptera en tukan idag! Dessa färgstarka och lekfulla fåglar kommer att föra glädje och färg till ditt liv.",
-				Category = "Tukan",
-				IsActive = true,
-				AccountID = 22,
-				Price = 1800,
-				Title = "Adoptera en Tukan - Färg och Glädje!",
-				StartDate = DateTime.Parse("2024-05-25"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 18,
+                    Description = "Få en smak av Hawaii genom att adoptera en albatross idag! Dessa eleganta flygare är kända för sina långa vingspann och förmågan att flyga över stora oceaner.",
+                    CategoryID = 19,
+                    IsActive = true,
+                    AccountID = 9,
+                    Price = 2800,
+                    Title = "Adoptera en Albatross - Flygande Skönhet från Hawaii!",
+                    StartDate = DateTime.Parse("2024-06-05"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Få en smak av Australien genom att adoptera en kakadua idag! Dessa högljudda men charmiga fåglar är kända för sina färgglada fjädrar och lekfulla personligheter.",
-				Category = "Kakadua",
-				IsActive = true,
-				AccountID = 23,
-				Price = 1200,
-				Title = "Adoptera en Kakadua - Australiens Charm!",
-				StartDate = DateTime.Parse("2024-05-26"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 19,
+                    Description = "Upplev skönheten i naturen genom att adoptera en sparv idag! Dessa små och kvicka fåglar är kända för sin livlighet och sångglädje.",
+                    CategoryID = 20,
+                    IsActive = true,
+                    AccountID = 10,
+                    Price = 500,
+                    Title = "Adoptera en Sparv - Liten men Livfull!",
+                    StartDate = DateTime.Parse("2024-06-06"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Upplev skönheten i naturen genom att adoptera en koltrast idag! Dessa sångfåglar är kända för sin vackra sång och eleganta fjäderdräkt.",
-				Category = "Koltrast",
-				IsActive = true,
-				AccountID = 24,
-				Price = 800,
-				Title = "Adoptera en Koltrast - Sångens Skönhet!",
-				StartDate = DateTime.Parse("2024-05-27"),
-			});
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 20,
+                    Description = "Få en smak av Australien genom att adoptera en emu idag! Dessa stora och snabba löpare är kända för sin karaktäristiska utseende och starka personligheter.",
+                    CategoryID = 21,
+                    IsActive = true,
+                    AccountID = 10,
+                    Price = 3200,
+                    Title = "Adoptera en Emu - Australiens Stolta Flykting!",
+                    StartDate = DateTime.Parse("2024-06-07"),
+                });
 
-			database.Ads.Add(new Ad
-			{
-				PictureUrl = "placeholder.jpg",
-				Description = "Ge ditt hem en touch av exotisk charm genom att adoptera en flamingo idag! Dessa eleganta fåglar är kända för sina långa ben och rosa fjädrar.",
-				Category = "Flamingo",
-				IsActive = true,
-				AccountID = 25,
-				Price = 2200,
-				Title = "Adoptera en Flamingo - Elegans och Charm!",
-				StartDate = DateTime.Parse("2024-05-28"),
-			});
-			database.SaveChanges();
-		}
-	}
-}
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 21,
+                    Description = "Upptäck skönheten i naturen genom att adoptera en fregattfågel idag! Dessa storslagna flygare är kända för sin förmåga att segla långa sträckor över havet.",
+                    CategoryID = 22,
+                    IsActive = true,
+                    AccountID = 11,
+                    Price = 2700,
+                    Title = "Adoptera en Fregattfågel - Seglande Skönhet från Haven!",
+                    StartDate = DateTime.Parse("2024-06-08"),
+                });
+
+                database.Ads.Add(new Ad
+                {
+                    PictureID = 22,
+                    Description = "Få en smak av Afrika genom att adoptera en guineafågel idag! Dessa färgglada och sociala fåglar är perfekta sällskapsdjur för den som uppskattar unika djurupplevelser.",
+                    CategoryID = 23,
+                    IsActive = true,
+                    AccountID = 11,
+                    Price = 1900,
+                    Title = "Adoptera en Guineafågel - Färgglad Vän från Afrika!",
+                    StartDate = DateTime.Parse("2024-06-09"),
+                });
+
+
+                database.SaveChanges();
+            }
+
+        }
+        public static void CreateCategorys(AppDbContext database)
+        {
+            if (!database.categories.Any())
+            {
+                database.categories.Add(new Category
+                {
+                    Name = "Påfågel"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Hök"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Svan"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Kolibri"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Tukan"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Uggla"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Papegoja"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Koltrast"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Flamingo"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Ara"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Kakadua"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Pelikan"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Struts"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Fasan"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Kondor"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Pingvin"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Valkyria"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Toekan"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Albatross"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Sparv"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Emu"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Fregattfågel"
+                });
+
+                database.categories.Add(new Category
+                {
+                    Name = "Guineafågel"
+                });
+            }
+            database.SaveChanges();
+        }
+    }
 }
 
 

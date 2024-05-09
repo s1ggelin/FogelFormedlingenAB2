@@ -122,7 +122,9 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
-    SampleData.Create(context);
+
+    SampleData.CreateCategorys(context);
+	SampleData.CreateAccounts(context);
     SampleData.CreateAds(context);
 }
 
