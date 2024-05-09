@@ -34,8 +34,11 @@ builder.Services.AddAuthentication(options =>
             {
                 OpenIDIssuer = issuer,
                 OpenIDSubject = subject,
-                Name = name
-            };
+                Name = name,
+				Phonenumber = " ",
+                Email = " "
+
+			};
             db.Accounts.Add(account);
         }
         else
