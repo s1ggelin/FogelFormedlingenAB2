@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,13 @@ builder.Services.AddAuthentication(options =>
 
         string subject = context.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
         string issuer = context.Principal.FindFirst(ClaimTypes.NameIdentifier).Issuer;
-        string name = context.Principal.FindFirst(ClaimTypes.Name).Value;
+        string name = context.Principal.FindFirst(ClaimTypes.Name)?.Value;
+        if (name.IsNullOrEmpty())
+        {
+			 name = context.Principal.FindFirst("name").Value;
+        }
+      
+
 
         var account = db.Accounts
             .FirstOrDefault(p => p.OpenIDIssuer == issuer && p.OpenIDSubject == subject);
