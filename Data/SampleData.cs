@@ -164,7 +164,7 @@ namespace FogelFormedlingenAB.Data
             {
 				if (!database.Images.Any())
                 {
-                    for (int i = 0; i <= 22; i++)
+                    for (int i = 0; i <= 23; i++)
                     {
                         database.Images.Add(new Image
                         {
