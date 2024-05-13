@@ -168,7 +168,7 @@ namespace FogelFormedlingenAB.Data
                     {
                         database.Images.Add(new Image
                         {
-                            PictureUrl = ""
+                            ImageUrl = ""
                         });
 
 						}
@@ -177,7 +177,7 @@ namespace FogelFormedlingenAB.Data
 
 				database.Ads.Add(new Ad
                 {
-                    PictureID = 1,
+                    ImageID = 1,
                     Description = "Adoptera en Hök - Fångaren av Skyn!",
                     CategoryID = 2,
                     IsActive = true,
@@ -189,7 +189,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 2,
+                    ImageID = 2,
                     Description = "Adoptera en Svan - Symbol för Kärlek och Skönhet!",
                     CategoryID = 3,
                     IsActive = true,
@@ -201,7 +201,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 3,
+                    ImageID = 3,
                     Description = "Adoptera en Kolibri - Ett Vackert Luftakrobat!",
                     CategoryID = 4,
                     IsActive = true,
@@ -213,7 +213,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 4,
+                    ImageID = 4,
                     Description = "Adoptera en Tukan - Färg och Glädje!",
                     CategoryID = 5,
                     IsActive = true,
@@ -225,7 +225,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 5,
+                    ImageID = 5,
                     Description = "Adoptera en Uggla - Symbol för Visdom och Skydd!",
                     CategoryID = 6,
                     IsActive = true,
@@ -237,7 +237,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 6,
+                    ImageID = 6,
                     Description = "Adoptera en Papegoja - Kvick och Pratglad!",
                     CategoryID = 7,
                     IsActive = true,
@@ -249,7 +249,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 7,
+                    ImageID = 7,
                     Description = "Adoptera en Koltrast - Sångens Skönhet!",
                     CategoryID = 8,
                     IsActive = true,
@@ -261,7 +261,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 8,
+                    ImageID = 8,
                     Description = "Adoptera en Flamingo - Elegans och Charm!",
                     CategoryID = 9,
                     IsActive = true,
@@ -273,7 +273,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 9,
+                    ImageID = 9,
                     Description = "Adoptera en Ara - Färgglad Vän från Tropikerna!",
                     CategoryID = 10,
                     IsActive = true,
@@ -285,7 +285,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 10,
+                    ImageID = 10,
                     Description = "Adoptera en Kakadua - Australiens Charm!",
                     CategoryID = 11,
                     IsActive = true,
@@ -297,7 +297,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 11,
+                    ImageID = 11,
                     Description = "Få en smak av Karibien genom att adoptera en pelikan idag! Dessa storslagna fåglar är kända för sina stora näbbar och förmågan att dyka efter fisk.",
                     CategoryID = 12,
                     IsActive = true,
@@ -309,7 +309,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 12,
+                    ImageID = 12,
                     Description = "Få en smak av Afrika genom att adoptera en struts idag! Dessa stolta och snabba löpare är kända för sin elegans och styrka.",
                     CategoryID = 13,
                     IsActive = true,
@@ -321,7 +321,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 13,
+                    ImageID = 13,
                     Description = "Upptäck skönheten i naturen genom att adoptera en fasan idag! Dessa färgglada och imponerande fåglar är perfekta för den som uppskattar en unik och exotisk djurupplevelse.",
                     CategoryID = 14,
                     IsActive = true,
@@ -333,7 +333,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 14,
+                    ImageID = 14,
                     Description = "Upplev skönheten i naturen genom att adoptera en kondor idag! Dessa storslagna rovfåglar är symboler för kraft och frihet.",
                     CategoryID = 15,
                     IsActive = true,
@@ -345,7 +345,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 15,
+                    ImageID = 15,
                     Description = "Få en smak av Antarktis genom att adoptera en pingvin idag! Dessa charmiga och sociala fåglar kommer att sprida glädje och skratt i ditt hem.",
                     CategoryID = 16,
                     IsActive = true,
@@ -357,7 +357,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 16,
+                    ImageID = 16,
                     Description = "Upptäck den nordiska mytologin genom att adoptera en valkyria idag! Dessa majestätiska kvinnliga krigare är kända för sin styrka och skönhet.",
                     CategoryID = 17,
                     IsActive = true,
@@ -369,7 +369,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 17,
+                    ImageID = 17,
                     Description = "Få en smak av Amazonas genom att adoptera en toekan idag! Dessa färgglada och livliga fåglar är kända för sina stora näbbar och spektakulära fjädrar.",
                     CategoryID = 18,
                     IsActive = true,
@@ -381,7 +381,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 18,
+                    ImageID = 18,
                     Description = "Få en smak av Hawaii genom att adoptera en albatross idag! Dessa eleganta flygare är kända för sina långa vingspann och förmågan att flyga över stora oceaner.",
                     CategoryID = 19,
                     IsActive = true,
@@ -393,7 +393,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 19,
+                    ImageID = 19,
                     Description = "Upplev skönheten i naturen genom att adoptera en sparv idag! Dessa små och kvicka fåglar är kända för sin livlighet och sångglädje.",
                     CategoryID = 20,
                     IsActive = true,
@@ -405,7 +405,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 20,
+                    ImageID = 20,
                     Description = "Få en smak av Australien genom att adoptera en emu idag! Dessa stora och snabba löpare är kända för sin karaktäristiska utseende och starka personligheter.",
                     CategoryID = 21,
                     IsActive = true,
@@ -417,7 +417,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 21,
+                    ImageID = 21,
                     Description = "Upptäck skönheten i naturen genom att adoptera en fregattfågel idag! Dessa storslagna flygare är kända för sin förmåga att segla långa sträckor över havet.",
                     CategoryID = 22,
                     IsActive = true,
@@ -429,7 +429,7 @@ namespace FogelFormedlingenAB.Data
 
                 database.Ads.Add(new Ad
                 {
-                    PictureID = 22,
+                    ImageID = 22,
                     Description = "Få en smak av Afrika genom att adoptera en guineafågel idag! Dessa färgglada och sociala fåglar är perfekta sällskapsdjur för den som uppskattar unika djurupplevelser.",
                     CategoryID = 23,
                     IsActive = true,
@@ -438,9 +438,20 @@ namespace FogelFormedlingenAB.Data
                     Title = "Adoptera en Guineafågel - Färgglad Vän från Afrika!",
                     StartDate = DateTime.Parse("2024-06-09"),
                 });
+				database.Ads.Add(new Ad
+				{
+					ImageID = 23,
+					Description = "JAG HAR FÅGEL! \nDU BETALA FÅGEL",
+					CategoryID = 23,
+					IsActive = true,
+					AccountID = 11,
+					Price = 1900,
+					Title = "DU INTE FÅGEL",
+					StartDate = DateTime.Parse("2024-06-09"),
+				});
 
 
-                database.SaveChanges();
+				database.SaveChanges();
             }
 
         }

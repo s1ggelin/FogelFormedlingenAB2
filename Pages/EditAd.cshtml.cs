@@ -53,7 +53,7 @@ namespace FogelFormedlingenAB.Pages
 				}
 
 				existingAd.Title = Ad.Title;
-				existingAd.PictureID = Ad.PictureID;
+				existingAd.ImageID = Ad.ImageID;
 				existingAd.Category = Ad.Category;
 				existingAd.Price = Ad.Price;
 				existingAd.Description = Ad.Description;
