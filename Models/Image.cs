@@ -6,7 +6,7 @@ namespace FogelFormedlingenAB.Models
     {
         
         public int ID { get; set; }
-		[MaxLength(100)]
+		[MaxLength(250)]
 		public required string ImageUrl { get; set; }
         public int AdID { get; set; }
         public List<Ad> Ad { get; set; }
