@@ -1,7 +1,7 @@
 ﻿using FogelFormedlingenAB.Data;
 using FogelFormedlingenAB.Models;
+using FogelFormedlingenAB.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
 
 namespace FogelFormedlingenAB.Pages
 {
@@ -21,8 +21,11 @@ namespace FogelFormedlingenAB.Pages
 		public string? SearchCategory { get; set; }
 		public List<string?> Categories { get; set; } = new List<string?>();
 
-
-		public void OnGet(int? pageNumber, string searchString, string category)
+		public async Task OnGetAsync()
+		{
+			Ads = await AdServices.GetAds();
+		}
+		/*public void OnGet(int? pageNumber, string searchString, string category)
 		{
 			if (pageNumber.HasValue)
 			{
@@ -63,7 +66,7 @@ namespace FogelFormedlingenAB.Pages
 
 			SearchString = searchString;
 			SearchCategory = category;
-		}
+		}*/
 		public string GetPictureUrl(int id)
 		{
 			return Request.Scheme + "://" + Request.Host + "/"+ database.Images.Where(i => i.ID == id).Select(i => i.ImageUrl).FirstOrDefault();

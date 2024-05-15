@@ -1,5 +1,6 @@
 ﻿using FogelFormedlingenAB.Data;
 using FogelFormedlingenAB.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace FogelFormedlingenAB.Controllers
             _logger = logger;
         }
         [HttpGet("/ads")]
+        [AllowAnonymous]
 		public ActionResult<List<Ad>> GetAds(string? title = null, int? categoryId = null, int pageNumber = 1, int pageSize = 10)
 		{
 			try
