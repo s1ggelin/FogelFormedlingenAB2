@@ -26,3 +26,4 @@ namespace FogelFormedlingenAB.Models
         public Favourite? Favourite { get; set; }
     }
 }
+
