@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FogelFormedlingenAB.Migrations
 {
     /// <inheritdoc />
-    public partial class Updateddatabasecleanmigration : Migration
+    public partial class cleanv3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,27 +42,13 @@ namespace FogelFormedlingenAB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PictureUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    AdID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Ads",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AccountID = table.Column<int>(type: "int", nullable: false),
-                    PictureID = table.Column<int>(type: "int", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
@@ -77,12 +63,6 @@ namespace FogelFormedlingenAB.Migrations
                         name: "FK_Ads_Accounts_AccountID",
                         column: x => x.AccountID,
                         principalTable: "Accounts",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ads_Images_PictureID",
-                        column: x => x.PictureID,
-                        principalTable: "Images",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -196,11 +176,6 @@ namespace FogelFormedlingenAB.Migrations
                 column: "CategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ads_PictureID",
-                table: "Ads",
-                column: "PictureID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Favourites_AccountID",
                 table: "Favourites",
                 column: "AccountID");
@@ -262,9 +237,6 @@ namespace FogelFormedlingenAB.Migrations
 
             migrationBuilder.DropTable(
                 name: "Accounts");
-
-            migrationBuilder.DropTable(
-                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "categories");

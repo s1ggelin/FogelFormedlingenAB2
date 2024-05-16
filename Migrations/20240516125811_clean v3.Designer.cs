@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240509110643_Updated database clean migration")]
-    partial class Updateddatabasecleanmigration
+    [Migration("20240516125811_clean v3")]
+    partial class cleanv3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,11 +80,12 @@ namespace FogelFormedlingenAB.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<int>("PictureID")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
@@ -102,8 +103,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.HasIndex("AccountID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("PictureID");
 
                     b.ToTable("Ads");
                 });
@@ -153,27 +152,6 @@ namespace FogelFormedlingenAB.Migrations
                         .HasFilter("[AdID1] IS NOT NULL");
 
                     b.ToTable("Favourites");
-                });
-
-            modelBuilder.Entity("FogelFormedlingenAB.Models.Image", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("AdID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PictureUrl")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("FogelFormedlingenAB.Models.Order", b =>
@@ -257,17 +235,9 @@ namespace FogelFormedlingenAB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FogelFormedlingenAB.Models.Image", "Picture")
-                        .WithMany("Ad")
-                        .HasForeignKey("PictureID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Account");
 
                     b.Navigation("Category");
-
-                    b.Navigation("Picture");
                 });
 
             modelBuilder.Entity("FogelFormedlingenAB.Models.Favourite", b =>
@@ -347,11 +317,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.Navigation("Favourite");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("FogelFormedlingenAB.Models.Image", b =>
-                {
-                    b.Navigation("Ad");
                 });
 #pragma warning restore 612, 618
         }

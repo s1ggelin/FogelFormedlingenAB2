@@ -77,8 +77,9 @@ namespace FogelFormedlingenAB.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("ImageID")
-                        .HasColumnType("int");
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -99,8 +100,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.HasIndex("AccountID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("ImageID");
 
                     b.ToTable("Ads");
                 });
@@ -150,27 +149,6 @@ namespace FogelFormedlingenAB.Migrations
                         .HasFilter("[AdID1] IS NOT NULL");
 
                     b.ToTable("Favourites");
-                });
-
-            modelBuilder.Entity("FogelFormedlingenAB.Models.Image", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("AdID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("FogelFormedlingenAB.Models.Order", b =>
@@ -254,17 +232,9 @@ namespace FogelFormedlingenAB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FogelFormedlingenAB.Models.Image", "Image")
-                        .WithMany("Ad")
-                        .HasForeignKey("ImageID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Account");
 
                     b.Navigation("Category");
-
-                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("FogelFormedlingenAB.Models.Favourite", b =>
@@ -344,11 +314,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.Navigation("Favourite");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("FogelFormedlingenAB.Models.Image", b =>
-                {
-                    b.Navigation("Ad");
                 });
 #pragma warning restore 612, 618
         }

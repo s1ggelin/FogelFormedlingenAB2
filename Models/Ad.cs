@@ -9,9 +9,8 @@ namespace FogelFormedlingenAB.Models
 
         public int AccountID { get; set; } // AccountID
 		public Account Account { get; set; }
-        public int ImageID { get; set; }
-        public Image Image { get; set; }
-        public int CategoryID { get; set; }
+		public string ImageUrl { get; set; }
+		public int CategoryID { get; set; }
         public Category Category { get; set; }
 		[MaxLength(80)]
 		public required string Title { get; set; }
