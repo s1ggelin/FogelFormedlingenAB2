@@ -21,17 +21,14 @@ namespace FogelFormedlingenAB.Controllers
 		}
 
 		[HttpGet("/sampledata")]
-		public async Task<List<Ad>> AddSampleData(string data)
+		public async Task<IActionResult> AddSampleData()
 		{
-			/*                                .    .-.;;;;;;'           .-._.;;;'           .:              /\                                  .-.                                  */
-			/* .;.       .-..;            ...;... (_)  .; .;           (_).;                ::          _  / |              .;.       .-.      (_) )-.           .-.                 */
-			/*   `;     ;'  ;;-. .-.       .'          :  ;;-.  .-.      .:--.,  :   .-.    ;;.-.      (  /  |  ..;.::..-.    `;     ;' .-.      .:   \   .-.    `-' . ,';.  ,:.,'   */
-			/*    ;;    ;  ;;  ;;   :    .;          .:' ;;  ;.;.-'     .:'  ;   ;  ;       ;; .'       `/.__|_.'.;  .;.-'     ;;    ;.;.-'     .:'    \ ;   ;' ;'   ;;  ;; :   ;    */
-			/*   ;;  ;  ;;.;`  ``:::'-'.;          .-:._.;`  ` `:::'  .-:  .'`..:;._`;;;;'_.'`  `.  .:' /    | .;'    `:::'   ;;  ;  ;;`:::'  .-:.      )`;;'_.;:._.';  ;;   `-:'    */
-			/*   `;.' `.;'                        (_/  `-            (_/                           (__.'     `-'              `;.' `.;'      (_/  `----'            ;    `.-._:'     */
+			if (database.Ads != null) 
+			{
+				return Forbid();
+			}
 			string jsonPath = "wwwroot/sample-data.json";
 			var accountIDs = Helpers.GetAccountIDs(database);
-			List<string> objects = new List<string>();
 			List<Ad> ads;
 			using (StreamReader r = new StreamReader(jsonPath))
 			{
@@ -41,7 +38,6 @@ namespace FogelFormedlingenAB.Controllers
 
 			Random rand = new Random();
 
-			// Generate a random number within the specified range
 			if (ads != null)
 			{
 				List<string> imageUrls = await Helpers.GetPixabayPics("bird", ads.Count());
@@ -56,8 +52,12 @@ namespace FogelFormedlingenAB.Controllers
 				database.SaveChanges();
 
 			}
+			else
+			{
+				return BadRequest();
+			}
 
-			return ads;
+			return NoContent();
 		}
 		private class Helpers
 		{
