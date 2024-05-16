@@ -84,7 +84,7 @@
 									<div class="mt-auto">
 										
 										<div class="btn-group">
-											<a asp-page="/AdPage" class="btn btn-sm btn-outline-secondary">Visa Fågel</a>
+											<a asp-page="/AdPage" asp-route-adId="@ad.ID" class="btn btn-sm btn-outline-secondary">Visa Fågel</a>
 										@if (ad.AccountID == accessControl.LoggedInAccountID)
 										{
 											<a asp-page="/EditAd" asp-route-id="@ad.ID" class="btn btn-sm btn-outline-primary">Redigera annons</a>
