@@ -60,6 +60,7 @@ namespace FogelFormedlingenAB.Controllers
 		}
 	
 		[HttpGet("/ads/{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Ad>> GetAd(int id)
         {
             try
@@ -76,6 +77,7 @@ namespace FogelFormedlingenAB.Controllers
         }
 
         [HttpPost("/ads")]
+        [AllowAnonymous]
         public async Task<IActionResult> PostAd(Ad ad)
         {
             try
@@ -92,6 +94,7 @@ namespace FogelFormedlingenAB.Controllers
 
         }
         [HttpPut("/ad/{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> UpdateAd(int id, Ad ad)
         {
             try
@@ -108,6 +111,7 @@ namespace FogelFormedlingenAB.Controllers
             
         }
         [HttpDelete("/ad/{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteAd(int id)
         {
             try

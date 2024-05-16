@@ -53,19 +53,15 @@ namespace FogelFormedlingenAB.Services
 
 			return ads; // Return the list of Ad objects.
 		}
-
-		// This method retrieves a single Ad object from the API endpoint by its ID.
 		public static async Task<Ad> GetAd(int adId)
 		{
-			Ad ad = null; // Initialize the ad variable to null.
-
-			using (HttpClient client = new HttpClient()) // Create a new instance of HttpClient for this request.
+			Ad ad = null;
+			using (HttpClient client = new HttpClient())
 			{
 				try
 				{
-					// Set up the API endpoint URL with the ad ID.
-					string baseUrl = "https://localhost:5000/";
-					string endpoint = $"api/ads/{adId}";
+					string baseUrl = "https://localhost:5000";
+					string endpoint = $"/ads/{id}"; 
 					string fullUrl = baseUrl + endpoint;
 
 					// Make a GET request to the API endpoint.
