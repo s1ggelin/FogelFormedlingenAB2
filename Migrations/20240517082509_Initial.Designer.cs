@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240516125811_clean v3")]
-    partial class cleanv3
+    [Migration("20240517082509_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
