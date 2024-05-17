@@ -185,7 +185,7 @@ namespace FogelFormedlingenAB.Controllers
 		[HttpGet("/sampledata")]
 		public async Task<IActionResult> AddSampleData()
 		{
-			if (database.Ads != null) 
+			if (database.Ads.Count() != 0) 
 			{
 				return Forbid();
 			}
