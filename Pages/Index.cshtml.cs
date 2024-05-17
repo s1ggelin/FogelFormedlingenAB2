@@ -18,12 +18,18 @@ namespace FogelFormedlingenAB.Pages
 		public int TotalPages { get; set; }
 		public int CurrentPage { get; set; }
 		public string? SearchString { get; set; }
-		public string? SearchCategory { get; set; }
-		public List<string?> Categories { get; set; } = new List<string?>();
+		
+		public List<Category> Categories { get; set; } = new List<Category>();
 
-		public async Task OnGetAsync()
+		public async Task OnGetAsync(int pageNumber = 1, string? searchString = null, int? categoryId = null)
 		{
-			Ads = await AdServices.GetAds();
+			Ads = await AdServices.GetAds(pageNumber, searchString, categoryId);
+			TotalPages = await AdServices.GetTotalPages(searchString, categoryId);
+			CurrentPage = pageNumber;
+			Categories = await AdServices.GetCategories();
+
+			SearchString = searchString; 
+			 // Convert categoryId to string for display in the search form
 		}
 		/*public void OnGet(int? pageNumber, string searchString, string category)
 		{

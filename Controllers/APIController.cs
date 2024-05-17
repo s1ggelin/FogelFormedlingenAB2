@@ -29,7 +29,6 @@ namespace FogelFormedlingenAB.Controllers
 			{
 				var query = database.Ads.AsQueryable();
 
-				
 				if (!string.IsNullOrEmpty(title))
 				{
 					query = query.Where(a => a.Title.Contains(title));
@@ -37,10 +36,10 @@ namespace FogelFormedlingenAB.Controllers
 
 				if (categoryId.HasValue)
 				{
-					query = query.Where(a => a.CategoryID == categoryId);
+					// Directly filter by CategoryID (no need to fetch the category by name)
+					query = query.Where(a => a.CategoryID == categoryId.Value);
 				}
 
-				
 				var totalAds = query.Count();
 				var totalPages = (int)Math.Ceiling((double)totalAds / pageSize);
 				pageNumber = Math.Max(1, Math.Min(pageNumber, totalPages));
@@ -58,8 +57,61 @@ namespace FogelFormedlingenAB.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "Cannot find any ads.");
 			}
 		}
-	
-		[HttpGet("/ads/{id}")]
+        [HttpGet("/ads/account/{accountId}")]
+        [AllowAnonymous]
+        public ActionResult<List<Ad>> GetAdsByAccountId(int accountId)
+        {
+                var ads = database.Ads
+                    .Where(a => a.AccountID == accountId)
+                    .ToList();
+
+                return ads;
+            
+        }
+        [HttpGet("/ads/count")]
+        [AllowAnonymous]
+        public ActionResult<int> GetTotalAdsCount(string? title = null, int? categoryId = null)
+        {
+            try
+            {
+                var query = database.Ads.AsQueryable();
+
+                if (!string.IsNullOrEmpty(title))
+                {
+                    query = query.Where(a => a.Title.Contains(title));
+                }
+
+                if (categoryId.HasValue)
+                {
+                    query = query.Where(a => a.CategoryID == categoryId);
+                }
+
+                var totalAds = query.Count();
+                return totalAds;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while counting ads.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error counting ads");
+            }
+        }
+
+        [HttpGet("/categories")]
+        [AllowAnonymous]
+        public ActionResult<List<Category>> GetCategories()
+        {
+            try
+            {
+				return database.categories.ToList();
+			}
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving categories.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error fetching categories");
+            }
+        }
+
+        [HttpGet("/ads/{id}")]
         [AllowAnonymous]
         public async Task<ActionResult<Ad>> GetAd(int id)
         {
@@ -110,7 +162,7 @@ namespace FogelFormedlingenAB.Controllers
             return NoContent();
             
         }
-        [HttpDelete("/ad/{id}")]
+        [HttpDelete("/ads/{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> DeleteAd(int id)
         {

@@ -50,11 +50,11 @@
 					<input type="text" id="searchString" name="searchString" class="form-control" placeholder="Sök på annons:" value="@Model.SearchString">
 				</div>
 				<div class="col-md-4">
-					<select id="category" name="category" class="form-select">
+					<select id="category" name="categoryId" class="form-select">
 						<option value="">Alla kategorier</option>
 						@foreach (var category in Model.Categories)
 						{
-							<option value="@category">@category</option>
+							<option value="@category.ID">@category.Name</option>
 						}
 					</select>
 				</div>
