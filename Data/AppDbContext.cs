@@ -9,7 +9,6 @@ namespace FogelFormedlingenAB.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Ad> Ads { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
-        public DbSet<Image> Images { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Reported> reports { get; set; }
 		public DbSet<Category> categories { get; set; }

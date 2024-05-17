@@ -134,7 +134,6 @@ using (var scope = app.Services.CreateScope())
 
     SampleData.CreateCategorys(context);
 	SampleData.CreateAccounts(context);
-    SampleData.CreateAds(context);
 }
 
 app.Run();
