@@ -26,7 +26,7 @@
                         <li class="list-group-item">
                             <div class="d-flex justify-content-between">
                                 <h3>@ad.Title</h3>
-                                <form method="post" asp-page-handler="RemoveAd" asp-route-adId="@ad.ID" )">
+                                <form method="post" asp-page-handler="RemoveAd" asp-route-adId="@ad.ID">
                                     <button type="submit" class="btn btn-danger">Delete Ad</button>
                                 </form>
                             </div>
@@ -42,29 +42,31 @@
         </div>
     </div>
 
+   @* Commented out because AdsILiked is not implemented yet, in progress
     <div class="card my-4">
         <div class="card-body">
             <h2 class="card-title">Ads I've Liked</h2>
-            @if (Model.AdsILiked.Any())
+    @if (Model.AdsILiked.Any())
+    {
+                    <ul class="list-group">
+            @foreach (var ad in Model.AdsILiked)
             {
-                <ul class="list-group">
-                    @foreach (var ad in Model.AdsILiked)
-                    {
-                        <li class="list-group-item">
-                            <h3>@ad.Title</h3>
-                            <p>@ad.Description</p>
-                            <!-- Display other ad details here -->
-                            <form method="post" asp-page-handler="RemoveFromFavorites" asp-route-adId="@ad.ID">
-                                <button type="submit" class="btn btn-danger">Remove from Favorites</button>
-                            </form>
-                        </li>
-                    }
-                </ul>
+                                <li class="list-group-item">
+                                    <h3>@ad.Title</h3>
+                                    <p>@ad.Description</p>
+                                    <form method="post" asp-page-handler="RemoveFromFavorites" asp-route-adId="@ad.ID">
+                                        <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                                    </form>
+                                </li>
             }
-            else
-            {
-                <p>You have not liked any ads!</p>
-            }
+                    </ul>
+    }
+    else
+    {
+                    <p>You have not liked any ads!</p>
+    }
         </div>
+   *@
     </div>
+   
 </div>

@@ -1,5 +1,24 @@
 ﻿@page
 @model FogelFormedlingenAB.Pages.AdPageModel
-@{
-    @* Page for individual ads when clicking from homepage or other place *@
+
+<h1>Ad Details</h1>
+
+@if (Model.Ad != null)
+{
+	<div id="ad-details">
+		<div class="product-image-container">
+			<img src="~/images/@Model.Ad.Image" alt="@Model.Ad.Title" class="ad-image" />
+		</div>
+		<ul>
+			<h2>@Model.Ad.Title</h2>
+			<li>Kategori: @Model.Ad.Category</li>
+			<li>Beskrivning: @Model.Ad.Description</li>
+			<li>Pris: <strong>@Model.Ad.Price.ToString("C0")</strong></li>		
+		</ul>
+
+	</div>
+}
+else
+{
+    <p>Ad not found.</p>
 }

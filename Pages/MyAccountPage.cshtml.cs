@@ -4,44 +4,49 @@ using Microsoft.EntityFrameworkCore;
 using FogelFormedlingenAB.Data;
 using FogelFormedlingenAB.Models;
 using System.Linq;
+using FogelFormedlingenAB.Services;
 
 namespace FogelFormedlingenAB.Pages
 {
 	public class MyAccountPageModel : PageModel
 	{
-		private readonly AppDbContext _db;
+		
 		private readonly AccessControl _accessControl;
 
-		public MyAccountPageModel(AppDbContext db, AccessControl accessControl)
+		public MyAccountPageModel( AccessControl accessControl)
 		{
-			_db = db;
 			_accessControl = accessControl;
 		}
 
-		public List<Ad> MyAds { get; set; } = new List<Ad>();
-		public List<Ad> AdsILiked { get; set; } = new List<Ad>();
+		public  List<Ad> MyAds { get; set; } = new List<Ad>();
+        
+    
+        /*public List<Ad> AdsILiked { get; set; } = new List<Ad>();*/
 
-		public void OnGet()
+        public async Task OnGet()
+        {
+            var accountId = _accessControl.LoggedInAccountID;
+
+            MyAds = await AdServices.GetAdsByAccountId(accountId); // Filter by account ID
+
+
+        }
+		 //-----------------------BELOW IS WORK IN PROGRESS----------------
+        /*AdsILiked = _db.Ads
+            .Where(ad => _db.Favourites.Any(f => f.AccountID == accountId && f.AdID == ad.ID))
+            .ToList();*/
+
+
+        /*public IActionResult OnPostAddToFavorites(int adId)
 		{
 			var accountId = _accessControl.LoggedInAccountID;
 
-			MyAds = _db.Ads.Where(ad => ad.AccountID == accountId).ToList();
 
-			AdsILiked = _db.Ads
-				.Where(ad => _db.Favourites.Any(f => f.AccountID == accountId && f.AdID == ad.ID))
-				.ToList();
-		}
-
-		public IActionResult OnPostAddToFavorites(int adId)
-		{
-			var accountId = _accessControl.LoggedInAccountID;
-
-		
 			var existingFavorite = _db.Favourites.FirstOrDefault(f => f.AccountID == accountId && f.AdID == adId);
 
 			if (existingFavorite == null)
 			{
-			
+
 				var newFavorite = new Favourite { AccountID = accountId, AdID = adId };
 				_db.Favourites.Add(newFavorite);
 				_db.SaveChanges();
@@ -54,7 +59,7 @@ namespace FogelFormedlingenAB.Pages
 		{
 			var accountId = _accessControl.LoggedInAccountID;
 
-	
+
 			var favorite = _db.Favourites.FirstOrDefault(f => f.AccountID == accountId && f.AdID == adId);
 
 			if (favorite != null)
@@ -64,19 +69,26 @@ namespace FogelFormedlingenAB.Pages
 			}
 
 			return RedirectToPage("/MyAccountPage");
-		}
-        public IActionResult OnPostRemoveAd(int adId)
-        {
+		}*/
+        public async Task<IActionResult> OnPostRemoveAd(int adId)
+        {   
             var accountId = _accessControl.LoggedInAccountID;
+            MyAds = await AdServices.GetAdsByAccountId(accountId);
+            var adToRemove = MyAds.FirstOrDefault(ad => ad.AccountID == accountId && ad.ID == adId);
 
-            var adToRemove = _db.Ads.FirstOrDefault(ad => ad.AccountID == accountId && ad.ID == adId);
-
-            if (adToRemove != null)
+            if (adToRemove == null)
             {
-                _db.Ads.Remove(adToRemove);
-                _db.SaveChanges();
+                return RedirectToPage("/MyAccountPage"); 
             }
 
+            var success = await AdServices.DeleteAd(adId); // bool to check if successful in servicetree continue
+            if (!success)
+            {
+                return RedirectToPage("/MyAccountPage");
+            }
+
+            MyAds.Remove(adToRemove); //remove from local list in case
+            
             return RedirectToPage("/MyAccountPage");
         }
     }
