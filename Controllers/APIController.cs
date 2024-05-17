@@ -181,11 +181,6 @@ namespace FogelFormedlingenAB.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ad could not be deleted.");
 			}
         }
-    }
-		public APIController(AppDbContext database)
-		{
-			this.database = database;
-		}
 
 		[HttpGet("/sampledata")]
 		public async Task<IActionResult> AddSampleData()
