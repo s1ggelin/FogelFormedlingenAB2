@@ -46,13 +46,13 @@ namespace FogelFormedlingenAB.Pages
 				var selectedCategory = _database.categories.Find(selectedCategoryID);
 				Ad.Category = selectedCategory;
 			}
-           
-	
-            var image = new Image { ImageUrl = ImageUrl };
-            Ad.Image = image;
+
+
+			var image = ImageUrl;
+            Ad.ImageUrl = image;
 
             _database.Ads.Add(Ad);
-            _database.Images.Add(image);
+           
 
             _database.SaveChanges();
 
