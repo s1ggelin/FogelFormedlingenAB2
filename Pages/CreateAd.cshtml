@@ -58,13 +58,16 @@
 
                         @if (Model.Categories != null)
                         {
-                            <select class="form-select" id="category" name="Ad.CategoryID" required>
-                                <option value="">Välj kategori</option>
-                                @foreach (var category in Model.Categories)
-                                {
-                                    <option value="@category.ID">@category.Name</option>
-                                }
-                            </select>
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Välj kategori:</label>
+                                <select class="form-select" id="category" name="Ad.CategoryID" required>
+                                    <option value="">Välj kategori</option>
+                                    @foreach (var category in Model.Categories)
+                                    {
+                                        <option value="@category.ID">@category.Name</option>
+                                    }
+                                </select>
+                            </div>
                         }
                         else
                         {
@@ -81,6 +84,7 @@
 
                         <button type="submit" class="btn btn-primary">Lägg upp annons</button>
                     </form>
+
                 </div>
             </div>
         </section>

@@ -128,7 +128,7 @@ namespace FogelFormedlingenAB.Services
 		// This method creates a new Ad object by sending a POST request to the API endpoint.
 		public static async Task<bool> CreateAd(Ad newAd)
 		{
-			using (HttpClient client = new HttpClient()) // Create a new instance of HttpClient for this request.
+			using (HttpClient client = new HttpClient()) 
 			{
 				try
 				{
@@ -141,24 +141,20 @@ namespace FogelFormedlingenAB.Services
 					var json = JsonConvert.SerializeObject(newAd);
 					var data = new StringContent(json, System.Text.Encoding.UTF8, "application/json"); // Create a StringContent with the JSON data.
 
-					// Make a POST request to the API endpoint with the JSON data.
 					HttpResponseMessage respone = await client.PostAsync(fullUrl, data);
-
-					// If the request is successful, return true.
+	
 					if (respone.IsSuccessStatusCode)
 					{
 						return true;
 					}
 					else
 					{
-						// If the request fails, log the error status code and return false.
 						Console.WriteLine($"Error: {respone.StatusCode}");
 						return false;
 					}
 				}
 				catch (Exception ex)
 				{
-					// If an exception occurs, log the error message and return false.
 					Console.WriteLine($"An error occurred: {ex.Message}");
 					return false;
 				}
@@ -307,5 +303,7 @@ namespace FogelFormedlingenAB.Services
 			}
 			return new List<Category>(); 
 		}
-	}
+        
+    }
 }
+	
