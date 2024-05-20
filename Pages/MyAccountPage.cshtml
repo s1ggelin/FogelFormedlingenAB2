@@ -12,6 +12,9 @@
         <div class="card-body">
             <h2 class="card-title">Account Details</h2>
             <p class="card-text">Account ID: @AccessControl.LoggedInAccountID</p>
+            <form method="post" asp-page-handler="DeleteAccount">
+                <button type="submit" class="btn btn-danger">Log Out</button>
+            </form>
         </div>
     </div>
 
