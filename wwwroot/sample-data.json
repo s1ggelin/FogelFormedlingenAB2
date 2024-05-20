@@ -1,62 +1,69 @@
 [
-      {
-       
+    {
+        "AccountID": 0,
         "Description": "Köpte denna korpgam på semester i Ecuador förra våren. Tänkte ha den på min balkong men då det snabbt började försvinna katter från området och han aldrig rörde sin mat bestämde jag mig för att ha honom inne. Det borde jag inte gjort. Säljes till högstbjudande. BVSA! Snälla ta honom!!",
         "CategoryID": 2,
         "IsActive": true,
         "Price": 1800,
         "Title": "Korpgam 1 år",
         "StartDate": "2024-05-11T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Vi fick ett svanpar i bröllopspresent av min moster. Nu har dom fått ungar och blivit lite väl aggressiva mot våra hönor och vi behöver därför sälja. Det är ett par och dom säljes som ett par. Säljer alltså inte bara en, utan bara båda. Prutat och klart.!",
         "CategoryID": 3,
         "IsActive": true,
         "Price": 2500,
         "Title": "Två Svanar säljes",
         "StartDate": "2024-05-12T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Hej. Har en skogsduva som suttit i min rhododendron i 3 månader och hoat. Jag orkar ej mer. Har fångat den i skokartong och skänker den nu till den som är villig att ta hand om den. Vet inte så mycket om den förutom att den hoar konstant när man försöker sova.",
         "CategoryID": 4,
         "IsActive": true,
         "Price": 1200,
         "Title": "Sjukt irriterande skogsduva bortskänkes",
         "StartDate": "2024-05-13T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Säljer en sjukt ovanlig manakin! Inte hört talas om denna fågel? Det hade inte jag heller. BVSA!",
         "CategoryID": 5,
         "IsActive": true,
         "Price": 1800,
         "Title": "Manakin ovanlig!",
         "StartDate": "2024-05-14T00:00:00"
-      },
-      {,
+    },
+    {
+        "AccountID": 0,
         "Description": "Superfin Slaguggla säljes pga allergi. Då min dotter blivit allergisk mot möss och vi därför inte längre kan mata den är vi tvungna att sälja. Jättesnäll och van vid barn. Gillar träflis och Desperate Housewives.",
         "CategoryID": 6,
         "IsActive": true,
         "Price": 1500,
         "Title": "Slaguggla vacker",
         "StartDate": "2024-05-15T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Kråka. Fick två stycken i födelsedagspresent så säljer den ena. Kvitto finns tyvärr ej då min morbror köpte den i London. BVSA!",
         "CategoryID": 7,
         "IsActive": true,
         "Price": 2000,
         "Title": "Kråka!",
         "StartDate": "2024-05-16T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Nu finns det tillfälle att införskaffa sig en alldeles egen koltrast! Den är svart. Först till kvarn!",
         "CategoryID": 8,
         "IsActive": true,
         "Price": 800,
         "Title": "Koltrast 3 år svart!",
         "StartDate": "2024-05-17T00:00:00"
-      },
+    },
     {
+        "AccountID": 0,
         "Description": "Hej! Det har blivit dags att göra sig av med den här skönheten. Det är en 5 årig marabou stork som lystrar till namnet Nils. Vi har haft Nils sedan han låg i ägget och han kläcktes här i vår  källare. Nu ska vi flytta till Sudan och därför behöver Nils hitta ett nytt hem! Största vikt läggs vid att Nils får komma till ett hem som passar hans behov. Skriv för mer info!",
         "CategoryID": 9,
         "IsActive": true,
@@ -65,6 +72,7 @@
         "StartDate": "2024-05-18T00:00:00"
     },
     {
+        "AccountID": 0,
         "Description": "Skata gammalHej! Dags att sälja vår gamla skata då vi köpt ny. Mest hade den till att sno silverskedar från grannen. Funkat toppen. DM för mer info.",
         "CategoryID": 10,
         "IsActive": true,
@@ -72,116 +80,131 @@
         "Title": "Skata gammal",
         "StartDate": "2024-05-22T00:00:00"
     },
-      {
+    {
+        "AccountID": 0,
         "Description": "Hej! Med en tår i ögat är det dags att sälja pärlan. Det är 3 årig Kakadua vid namn Doris. Hon är pratglad och älskar digestivekex! Ser helst att hon kommer till någon som har tid att sitta ner och diskutera politik med henne. Tar endast swish!!",
         "CategoryID": 11,
         "IsActive": true,
         "Price": 1200,
         "Title": "Kakadua endast 1 ägare!",
         "StartDate": "2024-05-23T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Säljer denna pelikan. Bott hos min mor som tyvärr inte orkar ta hand om den längre. Alla papper finns. Den är van vid barn och fungerar utmärkt som sällskapsfågel. ",
         "CategoryID": 12,
         "IsActive": true,
         "Price": 2500,
         "Title": "Pelikan avyttras",
         "StartDate": "2024-05-29T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Haft denna struts som race struts. Vunnit en del lopp. Han är snabb som satan. Säljes pga bristande intresse. Hör av dig för mer info!",
         "CategoryID": 13,
         "IsActive": true,
         "Price": 3000,
         "Title": "Svin snabb struts!",
         "StartDate": "2024-05-30T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Fin. Säljes pga allergi.",
         "CategoryID": 14,
         "IsActive": true,
         "Price": 1800,
         "Title": "Fasan säljes",
         "StartDate": "2024-05-31T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Har du tröttnat på att dina vänner har coolare fåglar än dig? Isåfall skall du köpa denna kondor. Han är en best utan dess like. Haft honom i garaget då han plockade älgar på löpande band i skogen bredvid. Säljes i befintligt skick. Prutat och klart!",
         "CategoryID": 15,
         "IsActive": true,
         "Price": 4000,
         "Title": "Kondor 4år fin",
         "StartDate": "2024-06-01T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Passa på att skaffa dig en alldeles egen Pingvin! Nu har vi fått in denna jättefina Kejsarpingvin. Passa på att köpa nu så att du är redo när vintern kommer! Mat och vatten ingår i priset. Tveka inte att höra av dig!",
         "CategoryID": 16,
         "IsActive": true,
         "Price": 1500,
         "Title": "Adoptera en Pingvin - Charm och Gl�dje fr�n Antarktis!",
         "StartDate": "2024-06-02T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Skata säljes. Vet inte mycket om den. Min morfar hade den innan mig. BVSA",
         "CategoryID": 17,
         "IsActive": true,
         "Price": 5000,
         "Title": "Skata",
         "StartDate": "2024-06-03T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Dags att sälja denna mycket fina tukan. Bott hos mig i 2 år och innan det hos annan ägare i Helsingborg. Säljes i befintligt skick. Fågeln är 5 år och därför får man också räkna med vissa skavanker. Inga näbbklämmare tack! Prutat och klart!",
         "CategoryID": 18,
         "IsActive": true,
         "Price": 2200,
         "Title": "5 årig Tukan",
         "StartDate": "2024-06-04T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Nu har vi fått in en extremt välvårdad och fin Albatross. Med ett vingspann på hela 3m kan vi garantera att denna fågel kommer att bli en snackis i ditt umgänge! Som alltid är alla våra fåglar servade och besiktigade av våra veterinärer. Vi tar självklart din fågel i inbyte och förmånlig finansiering går att ordna via Santander. ",
         "CategoryID": 19,
         "IsActive": true,
         "Price": 2800,
         "Title": "EXTREMT Välvårdad Albatross!",
         "StartDate": "2024-06-05T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Med en tår i ögat har det tyvärr blivit dags att sälja vår fina sparv Fridolf. Han behöver mer utrymme för att kunna leva ett bra liv. Därför ser jag helst att han köps av någon som kan ha honom löst i hemmet. Medföljer fågelmat och vattenflaska.",
         "CategoryID": 20,
         "IsActive": true,
         "Price": 500,
         "Title": "Sparven Fridolf söker nytt hem",
         "StartDate": "2024-06-06T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Mycket fin och välvårdad Emu säljes. Uppfödd i en by utanför Perth i Australien och importerad av Svenska Fågel Importen. All dokumentation finns. Bara att höra av er vid ev frågor.",
         "CategoryID": 21,
         "IsActive": true,
         "Price": 3200,
         "Title": "Fin Emu!",
         "StartDate": "2024-06-07T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Mycket fin fregatt säljes pga ändrade levnadsvillkor. Älskar ärtor och att flyga runt i vardagsrummet. Van vid barn. BVSA! DM för mer info.",
         "CategoryID": 22,
         "IsActive": true,
         "Price": 2700,
         "Title": "Fregattfågel säljes",
         "StartDate": "2024-06-08T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "Guineafågel 3 år, haft den tillsammas med min kakadua men dom har börjat slåss så måste tyvärr sälja Guinean. Alltid servad hos auktoriserad veterinär. Inte flugit många mil.",
+        "CategoryID":  23,
         "IsActive": true,
         "Price": 1900,
         "Title": "Guineafågel 3 år LÅGMILARE",
         "StartDate": "2024-06-09T00:00:00"
-      },
-      {
+    },
+    {
+        "AccountID": 0,
         "Description": "JAG HAR FÖGEL! \nDO BETALA FÖGEL",
         "CategoryID": 23,
         "IsActive": true,
         "Price": 1900,
         "Title": "DO KÖPA MIN FÖGEL",
         "StartDate": "2024-06-09T00:00:00"
-      }
+    }
     ]
 
