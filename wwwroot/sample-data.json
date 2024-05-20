@@ -1,22 +1,22 @@
 [
       {
        
-        "Description": "Adoptera en H�k - F�ngaren av Skyn!",
+        "Description": "Adoptera en Hök - Fångaren av Skyn!",
         "CategoryID": 2,
         "IsActive": true,
      
         "Price": 1800,
-        "Title": "Adoptera en H�k - F�ngaren av Skyn!",
+        "Title": "Adoptera en Hök - Fångaren av Skyn!",
         "StartDate": "2024-05-11T00:00:00"
       },
       {
         "ImageID": 2,
-        "Description": "Adoptera en Svan - Symbol f�r K�rlek och Sk�nhet!",
+        "Description": "Adoptera en Svan - Symbol för Kärlek och Skönhet!",
         "CategoryID": 3,
         "IsActive": true,
         "AccountID": 1,
         "Price": 2500,
-        "Title": "Adoptera en Svan - Symbol f�r K�rlek och Sk�nhet!",
+        "Title": "Adoptera en Svan - Symbol för Kärlek och Skönhet!",
         "StartDate": "2024-05-12T00:00:00"
       },
       {
@@ -31,22 +31,22 @@
       },
       {
         "ImageID": 4,
-        "Description": "Adoptera en Tukan - F�rg och Gl�dje!",
+        "Description": "Adoptera en Tukan - Färg och Glädje!",
         "CategoryID": 5,
         "IsActive": true,
         "AccountID": 2,
         "Price": 1800,
-        "Title": "Adoptera en Tukan - F�rg och Gl�dje!",
+        "Title": "Adoptera en Tukan - Färg och Glädje!",
         "StartDate": "2024-05-14T00:00:00"
       },
       {
         "ImageID": 5,
-        "Description": "Adoptera en Uggla - Symbol f�r Visdom och Skydd!",
+        "Description": "Adoptera en Uggla - Symbol för Visdom och Skydd!",
         "CategoryID": 6,
         "IsActive": true,
         "AccountID": 3,
         "Price": 1500,
-        "Title": "Adoptera en Uggla - Symbol f�r Visdom och Skydd!",
+        "Title": "Adoptera en Uggla - Symbol för Visdom och Skydd!",
         "StartDate": "2024-05-15T00:00:00"
       },
       {
@@ -61,12 +61,12 @@
       },
       {
         "ImageID": 7,
-        "Description": "Adoptera en Koltrast - S�ngens Sk�nhet!",
+        "Description": "Adoptera en Koltrast - Sångens Skönhet!",
         "CategoryID": 8,
         "IsActive": true,
         "AccountID": 4,
         "Price": 800,
-        "Title": "Adoptera en Koltrast - S�ngens Sk�nhet!",
+        "Title": "Adoptera en Koltrast - Sångens Skönhet!",
         "StartDate": "2024-05-17T00:00:00"
       },
       {
@@ -81,12 +81,12 @@
       },
       {
         "ImageID": 9,
-        "Description": "Adoptera en Ara - F�rgglad V�n fr�n Tropikerna!",
+        "Description": "Adoptera en Ara - Färgglad Vän från Tropikerna!",
         "CategoryID": 10,
         "IsActive": true,
         "AccountID": 5,
         "Price": 1500,
-        "Title": "Adoptera en Ara - F�rgglad V�n fr�n Tropikerna!",
+        "Title": "Adoptera en Ara - Färgglad Vän från Tropikerna!",
         "StartDate": "2024-05-22T00:00:00"
       },
       {
@@ -101,87 +101,87 @@
       },
       {
         "ImageID": 11,
-        "Description": "F� en smak av Karibien genom att adoptera en pelikan idag! Dessa storslagna f�glar �r k�nda f�r sina stora n�bbar och f�rm�gan att dyka efter fisk.",
+        "Description": "Få en smak av Karibien genom att adoptera en pelikan idag! Dessa storslagna fåglar är kända för sina stora näbbar och förmågan att dyka efter fisk.",
         "CategoryID": 12,
         "IsActive": true,
         "AccountID": 6,
         "Price": 2500,
-        "Title": "Adoptera en Pelikan - Storslagen Fiskare fr�n Karibien!",
+        "Title": "Adoptera en Pelikan - Storslagen Fiskare från Karibien!",
         "StartDate": "2024-05-29T00:00:00"
       },
       {
         "ImageID": 12,
-        "Description": "F� en smak av Afrika genom att adoptera en struts idag! Dessa stolta och snabba l�pare �r k�nda f�r sin elegans och styrka.",
+        "Description": "Få en smak av Afrika genom att adoptera en struts idag! Dessa stolta och snabba löpare är kända för sin elegans och styrka.",
         "CategoryID": 13,
         "IsActive": true,
         "AccountID": 6,
         "Price": 3000,
-        "Title": "Adoptera en Struts - Elegans och Styrka fr�n Afrika!",
+        "Title": "Adoptera en Struts - Elegans och Styrka från Afrika!",
         "StartDate": "2024-05-30T00:00:00"
       },
       {
         "ImageID": 13,
-        "Description": "Uppt�ck sk�nheten i naturen genom att adoptera en fasan idag! Dessa f�rgglada och imponerande f�glar �r perfekta f�r den som uppskattar en unik och exotisk djurupplevelse.",
+        "Description": "Upptäck skönheten i naturen genom att adoptera en fasan idag! Dessa färgglada och imponerande fåglar är perfekta för den som uppskattar en unik och exotisk djurupplevelse.",
         "CategoryID": 14,
         "IsActive": true,
         "AccountID": 7,
         "Price": 1800,
-        "Title": "Adoptera en Fasan - F�rgglad Sk�nhet fr�n Naturen!",
+        "Title": "Adoptera en Fasan - Färgglad Skönhet från Naturen!",
         "StartDate": "2024-05-31T00:00:00"
       },
       {
         "ImageID": 14,
-        "Description": "Upplev sk�nheten i naturen genom att adoptera en kondor idag! Dessa storslagna rovf�glar �r symboler f�r kraft och frihet.",
+        "Description": "Upplev skönheten i naturen genom att adoptera en kondor idag! Dessa storslagna rovfåglar är symboler för kraft och frihet.",
         "CategoryID": 15,
         "IsActive": true,
         "AccountID": 7,
         "Price": 4000,
-        "Title": "Adoptera en Kondor - Symbol f�r Kraft och Frihet!",
+        "Title": "Adoptera en Kondor - Symbol för Kraft och Frihet!",
         "StartDate": "2024-06-01T00:00:00"
       },
       {
         "ImageID": 15,
-        "Description": "F� en smak av Antarktis genom att adoptera en pingvin idag! Dessa charmiga och sociala f�glar kommer att sprida gl�dje och skratt i ditt hem.",
+        "Description": "Få en smak av Antarktis genom att adoptera en pingvin idag! Dessa charmiga och sociala fåglar kommer att sprida glädje och skratt i ditt hem.",
         "CategoryID": 16,
         "IsActive": true,
         "AccountID": 8,
         "Price": 1500,
-        "Title": "Adoptera en Pingvin - Charm och Gl�dje fr�n Antarktis!",
+        "Title": "Adoptera en Pingvin - Charm och Glädje från Antarktis!",
         "StartDate": "2024-06-02T00:00:00"
       },
       {
         "ImageID": 16,
-        "Description": "Uppt�ck den nordiska mytologin genom att adoptera en valkyria idag! Dessa majest�tiska kvinnliga krigare �r k�nda f�r sin styrka och sk�nhet.",
+        "Description": "Upptäck den nordiska mytologin genom att adoptera en valkyria idag! Dessa majestätiska kvinnliga krigare är kända för sin styrka och skönhet.",
         "CategoryID": 17,
         "IsActive": true,
         "AccountID": 8,
         "Price": 5000,
-        "Title": "Adoptera en Valkyria - Majest�tisk Krigare fr�n Nordisk Mytologi!",
+        "Title": "Adoptera en Valkyria - Majestätisk Krigare frön Nordisk Mytologi!",
         "StartDate": "2024-06-03T00:00:00"
       },
       {
         "ImageID": 17,
-        "Description": "F� en smak av Amazonas genom att adoptera en toekan idag! Dessa f�rgglada och livliga f�glar �r k�nda f�r sina stora n�bbar och spektakul�ra fj�drar.",
+        "Description": "Få en smak av Amazonas genom att adoptera en toekan idag! Dessa färgglada och livliga fåglar är kända för sina stora näbbar och spektakulära fjädrar.",
         "CategoryID": 18,
         "IsActive": true,
         "AccountID": 9,
         "Price": 2200,
-        "Title": "Adoptera en Toekan - F�rgprakt fr�n Amazonas!",
+        "Title": "Adoptera en Toekan - Färgprakt från Amazonas!",
         "StartDate": "2024-06-04T00:00:00"
       },
       {
         "ImageID": 18,
-        "Description": "F� en smak av Hawaii genom att adoptera en albatross idag! Dessa eleganta flygare �r k�nda f�r sina l�nga vingspann och f�rm�gan att flyga �ver stora oceaner.",
+        "Description": "Fä en smak av Hawaii genom att adoptera en albatross idag! Dessa eleganta flygare är kända för sina långa vingspann och förmågan att flyga över stora oceaner.",
         "CategoryID": 19,
         "IsActive": true,
         "AccountID": 9,
         "Price": 2800,
-        "Title": "Adoptera en Albatross - Flygande Sk�nhet fr�n Hawaii!",
+        "Title": "Adoptera en Albatross - Flygande Skönhet från Hawaii!",
         "StartDate": "2024-06-05T00:00:00"
       },
       {
         "ImageID": 19,
-        "Description": "Upplev sk�nheten i naturen genom att adoptera en sparv idag! Dessa sm� och kvicka f�glar �r k�nda f�r sin livlighet och s�nggl�dje.",
+        "Description": "Upplev skönheten i naturen genom att adoptera en sparv idag! Dessa små och kvicka fåglar är kända för sin livlighet och sångglädje.",
         "CategoryID": 20,
         "IsActive": true,
         "AccountID": 10,
@@ -191,7 +191,7 @@
       },
       {
         "ImageID": 20,
-        "Description": "F� en smak av Australien genom att adoptera en emu idag! Dessa stora och snabba l�pare �r k�nda f�r sin karakt�ristiska utseende och starka personligheter.",
+        "Description": "Få en smak av Australien genom att adoptera en emu idag! Dessa stora och snabba löpare är kända för sin karaktäristiska utseende och starka personligheter.",
         "CategoryID": 21,
         "IsActive": true,
         "AccountID": 10,
@@ -201,32 +201,32 @@
       },
       {
         "ImageID": 21,
-        "Description": "Uppt�ck sk�nheten i naturen genom att adoptera en fregattf�gel idag! Dessa storslagna flygare �r k�nda f�r sin f�rm�ga att segla l�nga str�ckor �ver havet.",
+        "Description": "Upptäck skönheten i naturen genom att adoptera en fregattfågel idag! Dessa storslagna flygare är kända för sin förmåga att segla långa sträckor över havet.",
         "CategoryID": 22,
         "IsActive": true,
         "AccountID": 11,
         "Price": 2700,
-        "Title": "Adoptera en Fregattf�gel - Seglande Sk�nhet fr�n Haven!",
+        "Title": "Adoptera en Fregattfågel - Seglande Skönhet från Haven!",
         "StartDate": "2024-06-08T00:00:00"
       },
       {
         "ImageID": 22,
-        "Description": "F� en smak av Afrika genom att adoptera en guineaf�gel idag! Dessa f�rgglada och sociala f�glar �r perfekta s�llskapsdjur f�r den som uppskattar unika djurupplevelser.",
+        "Description": "Få en smak av Afrika genom att adoptera en guineafågel idag! Dessa färgglada och sociala fåglar är perfekta sällskapsdjur för den som uppskattar unika djurupplevelser.",
         "CategoryID": 23,
         "IsActive": true,
         "AccountID": 11,
         "Price": 1900,
-        "Title": "Adoptera en Guineaf�gel - F�rgglad V�n fr�n Afrika!",
+        "Title": "Adoptera en Guineafågel - Färgglad Vän från Afrika!",
         "StartDate": "2024-06-09T00:00:00"
       },
       {
         "ImageID": 23,
-        "Description": "JAG HAR F�GEL! \nDO BETALA F�GEL",
+        "Description": "JAG HAR FÅGEL! \nDO BETALA FåGEL",
         "CategoryID": 23,
         "IsActive": true,
         "AccountID": 11,
         "Price": 1900,
-        "Title": "DO INTE F�GEL",
+        "Title": "DO INTE FÖGEL",
         "StartDate": "2024-06-09T00:00:00"
       }
     ]
