@@ -95,7 +95,7 @@ namespace FogelFormedlingenAB.Pages
             return RedirectToPage("/MyAccountPage");
         }
 
-        public async Task<IActionResult> OnPostDeleteAccount()
+        public async Task<IActionResult> OnPostLogOutAccount()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme, new AuthenticationProperties
             {
