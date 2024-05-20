@@ -184,7 +184,7 @@ namespace FogelFormedlingenAB.Services
 					HttpResponseMessage response = await client.PutAsync(fullUrl, data);
 
 					// If the request is successful, return true.
-					if (response.IsSuccessStatusCode)
+					if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.NoContent)
 					{
 						return true;
 					}

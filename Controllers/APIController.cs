@@ -168,9 +168,15 @@ namespace FogelFormedlingenAB.Controllers
 			try
 			{
 				var ad = await database.Ads.FindAsync(adId);
+				if (ad == null)
+				{
+					return NotFound();
+				}
+
 				database.Ads.Remove(ad);
 				await database.SaveChangesAsync();
-				return NoContent();
+
+				return Ok("Ad was deleted");
 			}
 			catch (Exception ex)
 			{
