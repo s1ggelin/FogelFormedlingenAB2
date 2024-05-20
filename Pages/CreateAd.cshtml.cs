@@ -1,63 +1,80 @@
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FogelFormedlingenAB.Data;
+using FogelFormedlingenAB.Services;
 using FogelFormedlingenAB.Models;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
+using FogelFormedlingenAB.Data;
+
 
 namespace FogelFormedlingenAB.Pages
+
 {
-	public class CreateAdModel : PageModel
-	{
-		private readonly AppDbContext _database;
-		private readonly AccessControl _accessControl;
-		public List<Category> Categories { get; set; }
+    public class CreateAdModel : PageModel
 
-		public CreateAdModel(AppDbContext database, AccessControl accessControl)
-		{
-			_database = database;
-			_accessControl = accessControl;
-		}
+    {
 
-		[BindProperty]
-		public string ImageUrl { get; set; }
+        private readonly AppDbContext _database;
+        private readonly AccessControl _accessControl;
+        public List<Category> Categories { get; set; }
 
-		[BindProperty]
-		public Ad Ad { get; set; }
-	
+        public CreateAdModel(AccessControl accessControl)
+        { 
+            _accessControl = accessControl;
+        }
 
-		public IActionResult OnGet()
-		{
-			Categories = _database.categories.ToList();
-			return Page();
-		}
+        [BindProperty]
+        public string ImageUrl { get; set; }
+        [BindProperty]
+        public Ad Ad { get; set; }
 
-		public IActionResult OnPost()
-		{
-			
-			Ad.AccountID = _accessControl.LoggedInAccountID;
-			Ad.Account = _database.Accounts.Find(Ad.AccountID);
-			Ad.IsActive = true;
-			Ad.StartDate = DateTime.Now;
+        public async Task<IActionResult> OnGetAsync()
+        {
+            Categories = await AdServices.GetCategories();
+            return Page();
+        }
 
-			int selectedCategoryID;
-			if (int.TryParse(Request.Form["Ad.CategoryID"], out selectedCategoryID))
-			{
-				var selectedCategory = _database.categories.Find(selectedCategoryID);
-				Ad.Category = selectedCategory;
-			}
+        public async Task<IActionResult> OnPostAsync()
+
+        {
+            Categories = await AdServices.GetCategories();
+            Ad.AccountID = _accessControl.LoggedInAccountID; //Set the AccountID directly on the Ad object.
+            Ad.IsActive = true;
+            Ad.StartDate = DateTime.Now;
 
 
-			var image = ImageUrl;
-            Ad.ImageUrl = image;
+            int selectedCategoryID;
 
-            _database.Ads.Add(Ad);
-           
+            if (int.TryParse(Request.Form["Ad.CategoryID"], out selectedCategoryID))
 
-            _database.SaveChanges();
+            {
+                var selectedCategory = Categories.FirstOrDefault(c => c.ID == selectedCategoryID);
+                if (selectedCategory != null)
+                {
+                    Ad.CategoryID = selectedCategory.ID;
+                }
+
+            }
+
+            Ad.ImageUrl = ImageUrl; // Set ImageUrl before creating the ad
+
+            var success = await AdServices.CreateAd(Ad);
+
+            if (!success)
+
+            {
+                ModelState.AddModelError("", "There was an error creating the ad. Please try again.");
+                Categories = await AdServices.GetCategories();
+                return Page();
+            }
 
             return RedirectToPage("/Index");
-           
-		}
-	}
+
+
+
+        }
+
+    }
+
 }

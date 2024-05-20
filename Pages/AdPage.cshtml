@@ -1,22 +1,33 @@
 ﻿@page
 @model FogelFormedlingenAB.Pages.AdPageModel
 
-<h1>Ad Details</h1>
+@{
+    ViewData["Title"] = "Adpage";
+}
+<h1 class="display-4">Ad Details</h1>
 
 @if (Model.Ad != null)
 {
-	<div id="ad-details">
-		<div class="product-image-container">
-			<img src="~/images/@Model.Ad.ImageUrl" alt="@Model.Ad.Title" class="ad-image" />
-		</div>
-		<ul>
-			<h2>@Model.Ad.Title</h2>
-			<li>Kategori: @Model.Ad.Category</li>
-			<li>Beskrivning: @Model.Ad.Description</li>
-			<li>Pris: <strong>@Model.Ad.Price.ToString("C0")</strong></li>		
-		</ul>
-
-	</div>
+    <div id="ad-details" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product-image-container">
+                    <img src="@Model.Ad.ImageUrl" alt="@Model.Ad.Title" class="ad-image img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>@Model.Ad.Title</h2>
+                <ul class="list-group">
+                    @if (!string.IsNullOrEmpty(Model.CategoryName))
+                    {
+                        <li class="list-group-item">Kategori: @Model.CategoryName</li>
+                    }
+                    <li class="list-group-item">Beskrivning: @Model.Ad.Description</li>
+                    <li class="list-group-item">Pris: <strong>@Model.Ad.Price.ToString("C0")</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 }
 else
 {

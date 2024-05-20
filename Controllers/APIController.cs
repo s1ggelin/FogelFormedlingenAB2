@@ -136,16 +136,30 @@ namespace FogelFormedlingenAB.Controllers
         {
             try
             {
+                // Fetch the Account object based on the provided AccountId
+                var account = await database.Accounts.FindAsync(ad.AccountID);
+
+                // Ensure the fetched Account is not null
+                if (account == null)
+                {
+                    return NotFound("Account not found.");
+                }
+
+                // Associate the fetched Account with the Ad object
+               
+
+                // Add the Ad object to the database
                 database.Ads.Add(ad);
                 await database.SaveChangesAsync();
+
+                // Return the created Ad object
                 return CreatedAtAction("GetAd", new { id = ad.ID }, ad);
             }
             catch (Exception ex)
             {
-				_logger.LogError(ex.ToString());
-				return StatusCode(StatusCodes.Status500InternalServerError, "Could not create ad.");
-			}
-
+                _logger.LogError(ex.ToString());
+                return StatusCode(StatusCodes.Status500InternalServerError, "Could not create ad.");
+            }
         }
         [HttpPut("/ad/{id}")]
         [AllowAnonymous]
@@ -181,8 +195,18 @@ namespace FogelFormedlingenAB.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ad could not be deleted.");
 			}
         }
+       /* [HttpGet("/accounts/{id}")]
+        public async Task<ActionResult<Account>> GetAccount(int id)
+        {
+            var account = await database.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return account;
+        }*/
 
-		[HttpGet("/sampledata")]
+        [HttpGet("/sampledata")]
 		public async Task<IActionResult> AddSampleData()
 		{
 			if (database.Ads.Count() != 0) 
