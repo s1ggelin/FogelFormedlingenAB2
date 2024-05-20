@@ -29,9 +29,9 @@ builder.Services.AddAuthentication(options =>
         string name = context.Principal.FindFirst(ClaimTypes.Name)?.Value;
         if (name.IsNullOrEmpty())
         {
-			 name = context.Principal.FindFirst("name").Value;
+            name = context.Principal.FindFirst("name").Value;
         }
-      
+
 
 
         var account = db.Accounts
@@ -44,10 +44,10 @@ builder.Services.AddAuthentication(options =>
                 OpenIDIssuer = issuer,
                 OpenIDSubject = subject,
                 Name = name,
-				Phonenumber = " ",
+                Phonenumber = " ",
                 Email = " "
 
-			};
+            };
             db.Accounts.Add(account);
         }
         else
@@ -79,11 +79,18 @@ builder.Services.AddAuthentication(options =>
     options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
     options.ResponseType = OpenIdConnectResponseType.Code;
     options.CallbackPath = "/signin-oidc-google";
+    options.SignedOutCallbackPath = "/signout-callback-oidc-google";
     options.Scope.Add("openid");
     options.Scope.Add("profile");
     options.Scope.Add("email");
     options.SaveTokens = true;
     options.GetClaimsFromUserInfoEndpoint = true;
+    options.Events.OnSignedOutCallbackRedirect = context =>
+    {
+        context.Response.Redirect("/Index");
+        context.HandleResponse();
+        return Task.CompletedTask;
+    };
 });
 
 builder.Services.AddAuthorization(options =>
@@ -133,7 +140,7 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<AppDbContext>();
 
     SampleData.CreateCategorys(context);
-	SampleData.CreateAccounts(context);
+    SampleData.CreateAccounts(context);
 }
 
 app.Run();
