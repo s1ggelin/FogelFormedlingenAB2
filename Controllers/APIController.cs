@@ -2,12 +2,13 @@
 using FogelFormedlingenAB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace FogelFormedlingenAB.Controllers
 {
-	[Route("/api")]
+	[Route("")]
 	[ApiController]
 	public class APIController : ControllerBase
 	{
@@ -144,7 +145,45 @@ namespace FogelFormedlingenAB.Controllers
 			}
 
 		}
-		[HttpPut("/ads/{adId}")]
+        [HttpPost("favourites")]
+        [AllowAnonymous]
+        public async Task<IActionResult> AddToFavourites([FromBody] Favourite favourite)  
+        {
+            try
+            {
+               
+                database.Favourites.Add(favourite);
+                await database.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding to favorites.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+        [HttpGet("favourites/ads/{accountId}")] 
+        [AllowAnonymous]
+        public IActionResult GetLikedAds(int accountId)
+        {
+            try
+            {
+                var likedAds = database.Favourites
+                   .Where(f => f.AccountID == accountId)
+                   .Include(f => f.Ad) 
+                   .Select(f => f.Ad)
+                   .ToList();
+
+                return Ok(likedAds);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while getting liked ads.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+        [HttpPut("/ads/{adId}")]
 		[AllowAnonymous]
 		public async Task<IActionResult> UpdateAd(Ad ad)
 		{
@@ -219,7 +258,10 @@ namespace FogelFormedlingenAB.Controllers
 
 			return NoContent();
 		}
-		private class Helpers
+        
+
+
+        private class Helpers
 		{
 
 			public static async Task<List<string>> GetPixabayPics(string query, int resultAmount)

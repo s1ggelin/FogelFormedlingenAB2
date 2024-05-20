@@ -3,6 +3,8 @@
 using FogelFormedlingenAB.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace FogelFormedlingenAB.Services
 {
@@ -277,7 +279,76 @@ namespace FogelFormedlingenAB.Services
 
 			return 0;
 		}
-		public static async Task<List<Category>> GetCategories()
+        public static async Task<bool> AddToFavouritesAsync(Favourite newFavourite)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string baseUrl = "https://localhost:5000";
+                    string endpoint = "/favourites"; 
+                    string fullUrl = baseUrl + endpoint;
+
+              
+                    var json = JsonConvert.SerializeObject(newFavourite);
+                    var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            
+                    HttpResponseMessage response = await client.PostAsync(fullUrl, data);
+
+               
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                      
+                        Console.WriteLine($"Error: {response.StatusCode}");
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        public static async Task<List<Ad>> GetLikedAds(int accountId)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    string baseUrl = "https://localhost:5000/";
+                    string endpoint = $"favourites/ads/{accountId}"; 
+                    string fullUrl = baseUrl + endpoint;
+
+                    var response = await client.GetAsync(fullUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        return JsonConvert.DeserializeObject<List<Ad>>(content);
+                    }
+                    else
+                    {
+                       
+                        return new List<Ad>(); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                  
+                    return new List<Ad>();
+                }
+            }
+        }
+
+        public static async Task<List<Category>> GetCategories()
 		{
 			using (HttpClient client = new HttpClient())
 			{

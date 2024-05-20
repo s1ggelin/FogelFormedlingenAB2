@@ -45,31 +45,30 @@
         </div>
     </div>
 
-   @* Commented out because AdsILiked is not implemented yet, in progress
     <div class="card my-4">
         <div class="card-body">
             <h2 class="card-title">Ads I've Liked</h2>
-    @if (Model.AdsILiked.Any())
-    {
-                    <ul class="list-group">
-            @foreach (var ad in Model.AdsILiked)
+            @if (Model.AdsILiked.Any())
             {
-                                <li class="list-group-item">
-                                    <h3>@ad.Title</h3>
-                                    <p>@ad.Description</p>
-                                    <form method="post" asp-page-handler="RemoveFromFavorites" asp-route-adId="@ad.ID">
-                                        <button type="submit" class="btn btn-danger">Remove from Favorites</button>
-                                    </form>
-                                </li>
+                <ul class="list-group">
+                    @foreach (var ad in Model.AdsILiked)
+                    {
+                        <li class="list-group-item">
+                            <h3>@ad.Title</h3>
+                            <p>@ad.Description</p>
+                            <form method="post" asp-page-handler="RemoveFromFavourites" asp-route-adId="@ad.ID">
+                                <button type="submit" class="btn btn-danger">Remove from Favourites</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
             }
-                    </ul>
-    }
-    else
-    {
-                    <p>You have not liked any ads!</p>
-    }
+            else
+            {
+                <p>You have not liked any ads!</p>
+            }
         </div>
-   *@
+    </div>
     </div>
    
 </div>

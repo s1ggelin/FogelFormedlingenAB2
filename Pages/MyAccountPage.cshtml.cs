@@ -22,57 +22,16 @@ namespace FogelFormedlingenAB.Pages
         }
 
         public List<Ad> MyAds { get; set; } = new List<Ad>();
-
-
-        /*public List<Ad> AdsILiked { get; set; } = new List<Ad>();*/
+        public List<Ad> AdsILiked { get; set; } = new List<Ad>(); 
 
         public async Task OnGet()
         {
             var accountId = _accessControl.LoggedInAccountID;
 
-            MyAds = await AdServices.GetAdsByAccountId(accountId); // Filter by account ID
-
-
+            MyAds = await AdServices.GetAdsByAccountId(accountId);// get owned ads
+            AdsILiked = await AdServices.GetLikedAds(accountId); // get liked ads
         }
-        //-----------------------BELOW IS WORK IN PROGRESS----------------
-        /*AdsILiked = _db.Ads
-            .Where(ad => _db.Favourites.Any(f => f.AccountID == accountId && f.AdID == ad.ID))
-            .ToList();*/
-
-
-        /*public IActionResult OnPostAddToFavorites(int adId)
-		{
-			var accountId = _accessControl.LoggedInAccountID;
-
-
-			var existingFavorite = _db.Favourites.FirstOrDefault(f => f.AccountID == accountId && f.AdID == adId);
-
-			if (existingFavorite == null)
-			{
-
-				var newFavorite = new Favourite { AccountID = accountId, AdID = adId };
-				_db.Favourites.Add(newFavorite);
-				_db.SaveChanges();
-			}
-
-			return RedirectToPage("/MyAccountPage");
-		}
-
-		public IActionResult OnPostRemoveFromFavorites(int adId)
-		{
-			var accountId = _accessControl.LoggedInAccountID;
-
-
-			var favorite = _db.Favourites.FirstOrDefault(f => f.AccountID == accountId && f.AdID == adId);
-
-			if (favorite != null)
-			{
-				_db.Favourites.Remove(favorite);
-				_db.SaveChanges();
-			}
-
-			return RedirectToPage("/MyAccountPage");
-		}*/
+       
         public async Task<IActionResult> OnPostRemoveAd(int adId)
         {
             var accountId = _accessControl.LoggedInAccountID;
@@ -105,5 +64,6 @@ namespace FogelFormedlingenAB.Pages
             return RedirectToPage("/Index");
 
         }
+
     }
 }
