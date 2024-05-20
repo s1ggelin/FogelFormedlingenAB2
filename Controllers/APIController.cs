@@ -1,30 +1,27 @@
 ﻿using FogelFormedlingenAB.Data;
 using FogelFormedlingenAB.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace FogelFormedlingenAB.Controllers
 {
-    [Route("/api")]
-    [ApiController]
-    public class APIController : ControllerBase
-    {
-        private readonly AppDbContext database;
+	[Route("/api")]
+	[ApiController]
+	public class APIController : ControllerBase
+	{
+		private readonly AppDbContext database;
 		private readonly ILogger<APIController> _logger;
 
 
 		public APIController(AppDbContext database, ILogger<APIController> logger)
-        {
-            this.database = database;
-            _logger = logger;
-        }
-        [HttpGet("/ads")]
-        [AllowAnonymous]
+		{
+			this.database = database;
+			_logger = logger;
+		}
+		[HttpGet("/ads")]
+		[AllowAnonymous]
 		public ActionResult<List<Ad>> GetAds(string? title = null, int? categoryId = null, int pageNumber = 1, int pageSize = 10)
 		{
 			try
@@ -59,157 +56,133 @@ namespace FogelFormedlingenAB.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "Cannot find any ads.");
 			}
 		}
-        [HttpGet("/ads/account/{accountId}")]
-        [AllowAnonymous]
-        public ActionResult<List<Ad>> GetAdsByAccountId(int accountId)
-        {
-                var ads = database.Ads
-                    .Where(a => a.AccountID == accountId)
-                    .ToList();
+		[HttpGet("/ads/account/{accountId}")]
+		[AllowAnonymous]
+		public ActionResult<List<Ad>> GetAdsByAccountId(int accountId)
+		{
+			var ads = database.Ads
+				.Where(a => a.AccountID == accountId)
+				.ToList();
 
-                return ads;
-            
-        }
-        [HttpGet("/ads/count")]
-        [AllowAnonymous]
-        public ActionResult<int> GetTotalAdsCount(string? title = null, int? categoryId = null)
-        {
-            try
-            {
-                var query = database.Ads.AsQueryable();
+			return ads;
 
-                if (!string.IsNullOrEmpty(title))
-                {
-                    query = query.Where(a => a.Title.Contains(title));
-                }
+		}
+		[HttpGet("/ads/count")]
+		[AllowAnonymous]
+		public ActionResult<int> GetTotalAdsCount(string? title = null, int? categoryId = null)
+		{
+			try
+			{
+				var query = database.Ads.AsQueryable();
 
-                if (categoryId.HasValue)
-                {
-                    query = query.Where(a => a.CategoryID == categoryId);
-                }
+				if (!string.IsNullOrEmpty(title))
+				{
+					query = query.Where(a => a.Title.Contains(title));
+				}
 
-                var totalAds = query.Count();
-                return totalAds;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while counting ads.");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error counting ads");
-            }
-        }
+				if (categoryId.HasValue)
+				{
+					query = query.Where(a => a.CategoryID == categoryId);
+				}
 
-        [HttpGet("/categories")]
-        [AllowAnonymous]
-        public ActionResult<List<Category>> GetCategories()
-        {
-            try
-            {
+				var totalAds = query.Count();
+				return totalAds;
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "An error occurred while counting ads.");
+				return StatusCode(StatusCodes.Status500InternalServerError, "Error counting ads");
+			}
+		}
+
+		[HttpGet("/categories")]
+		[AllowAnonymous]
+		public ActionResult<List<Category>> GetCategories()
+		{
+			try
+			{
 				return database.categories.ToList();
 			}
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while retrieving categories.");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error fetching categories");
-            }
-        }
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "An error occurred while retrieving categories.");
+				return StatusCode(StatusCodes.Status500InternalServerError, "Error fetching categories");
+			}
+		}
 
-        [HttpGet("/ads/{id}")]
-        [AllowAnonymous]
-        public async Task<ActionResult<Ad>> GetAd(int id)
-        {
-            try
-            {
-				var ad = await database.Ads.FindAsync(id);
+		[HttpGet("/ads/{adId}")]
+		[AllowAnonymous]
+		public async Task<ActionResult<Ad>> GetAd(int adId)
+		{
+			try
+			{
+				var ad = await database.Ads.FindAsync(adId);
 				return ad;
 			}
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.ToString());
-                return StatusCode(StatusCodes.Status500InternalServerError,"Can not find the specified ad.");
-            }
-            
-        }
-
-        [HttpPost("/ads")]
-        [AllowAnonymous]
-        public async Task<IActionResult> PostAd(Ad ad)
-        {
-            try
-            {
-                // Fetch the Account object based on the provided AccountId
-                var account = await database.Accounts.FindAsync(ad.AccountID);
-
-                // Ensure the fetched Account is not null
-                if (account == null)
-                {
-                    return NotFound("Account not found.");
-                }
-
-                // Associate the fetched Account with the Ad object
-               
-
-                // Add the Ad object to the database
-                database.Ads.Add(ad);
-                await database.SaveChangesAsync();
-
-                // Return the created Ad object
-                return CreatedAtAction("GetAd", new { id = ad.ID }, ad);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.ToString());
-                return StatusCode(StatusCodes.Status500InternalServerError, "Could not create ad.");
-            }
-        }
-        [HttpPut("/ad/{id}")]
-        [AllowAnonymous]
-        public async Task<IActionResult> UpdateAd(int id, Ad ad)
-        {
-            try
-            {
-				database.Ads.Update(ad);
-                await database.SaveChangesAsync();
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.ToString());
+				return StatusCode(StatusCodes.Status500InternalServerError, "Can not find the specified ad.");
 			}
-            catch (Exception ex)
-            {
+
+		}
+
+		[HttpPost("/ads")]
+		[AllowAnonymous]
+		public async Task<IActionResult> PostAd(Ad ad)
+		{
+			try
+			{
+				database.Ads.Add(ad);
+				await database.SaveChangesAsync();
+				return Ok(ad);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.ToString());
+				return StatusCode(StatusCodes.Status500InternalServerError, "Could not create ad.");
+			}
+
+		}
+		[HttpPut("/ads/{adId}")]
+		[AllowAnonymous]
+		public async Task<IActionResult> UpdateAd(Ad ad)
+		{
+			try
+			{
+				database.Ads.Update(ad);
+				await database.SaveChangesAsync();
+			}
+			catch (Exception ex)
+			{
 				_logger.LogError(ex.ToString());
 				return StatusCode(StatusCodes.Status500InternalServerError, "Could not update ad.");
 			}
-            return NoContent();
-            
-        }
-        [HttpDelete("/ads/{id}")]
-        [AllowAnonymous]
-        public async Task<IActionResult> DeleteAd(int id)
-        {
-            try
-            {
-                var ad = await database.Ads.FindAsync(id);
-                database.Ads.Remove(ad);
-                await database.SaveChangesAsync();
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
+			return NoContent();
+
+		}
+		[HttpDelete("/ads/{adId}")]
+		[AllowAnonymous]
+		public async Task<IActionResult> DeleteAd(int adId)
+		{
+			try
+			{
+				var ad = await database.Ads.FindAsync(adId);
+				database.Ads.Remove(ad);
+				await database.SaveChangesAsync();
+				return NoContent();
+			}
+			catch (Exception ex)
+			{
 				_logger.LogError(ex.ToString());
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ad could not be deleted.");
 			}
-        }
-       /* [HttpGet("/accounts/{id}")]
-        public async Task<ActionResult<Account>> GetAccount(int id)
-        {
-            var account = await database.Accounts.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-            return account;
-        }*/
+		}
 
-        [HttpGet("/sampledata")]
+		[HttpGet("/sampledata")]
 		public async Task<IActionResult> AddSampleData()
 		{
-			if (database.Ads.Count() != 0) 
+			if (database.Ads.Count() != 0)
 			{
 				return Forbid();
 			}
@@ -232,7 +205,8 @@ namespace FogelFormedlingenAB.Controllers
 					ads[i].AccountID = rand.Next(accountIDs.Min(), accountIDs.Max());
 					ads[i].ImageUrl = imageUrls[i];
 				}
-				foreach (Ad ad in ads) { 
+				foreach (Ad ad in ads)
+				{
 					database.Ads.Add(ad);
 				}
 				database.SaveChanges();
@@ -250,7 +224,6 @@ namespace FogelFormedlingenAB.Controllers
 
 			public static async Task<List<string>> GetPixabayPics(string query, int resultAmount)
 			{
-				List<string> objects = new List<string>();
 
 				using (HttpClient client = new HttpClient())
 				{
