@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FogelFormedlingenAB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240521090316_initial")]
-    partial class initial
+    [Migration("20240521123358_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,9 @@ namespace FogelFormedlingenAB.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Ratings")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -240,7 +243,7 @@ namespace FogelFormedlingenAB.Migrations
 
             modelBuilder.Entity("FogelFormedlingenAB.Models.Favourite", b =>
                 {
-                    b.HasOne("FogelFormedlingenAB.Models.Account", "Account")
+                    b.HasOne("FogelFormedlingenAB.Models.Account", null)
                         .WithMany("Favourites")
                         .HasForeignKey("AccountID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -255,8 +258,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.HasOne("FogelFormedlingenAB.Models.Ad", null)
                         .WithOne("Favourite")
                         .HasForeignKey("FogelFormedlingenAB.Models.Favourite", "AdID1");
-
-                    b.Navigation("Account");
 
                     b.Navigation("Ad");
                 });
