@@ -184,6 +184,7 @@ namespace FogelFormedlingenAB.Controllers
         {
             try
             {
+                database.Ads.Update(order.Ad);
                 database.Orders.Add(order);
                 await database.SaveChangesAsync();
 
