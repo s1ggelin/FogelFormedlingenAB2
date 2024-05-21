@@ -151,11 +151,25 @@ namespace FogelFormedlingenAB.Controllers
         {
             try
             {
-               
+                // Check if the favorite already exists
+                var existingFavorite = await database.Favourites
+                    .FirstOrDefaultAsync(f => f.AccountID == favourite.AccountID && f.AdID == favourite.AdID);
+
+                if (existingFavorite != null)
+                {
+                    return Conflict("This ad is already in your favorites."); // HTTP 409 Conflict
+                }
+
+                // If favorite doesn't exist, add it
                 database.Favourites.Add(favourite);
                 await database.SaveChangesAsync();
 
-                return Ok();
+                return CreatedAtAction(nameof(GetLikedAds), new { accountId = favourite.AccountID }, favourite); // HTTP 201 Created
+            }
+            catch (DbUpdateException ex) // Catch specific database exceptions
+            {
+                _logger.LogError(ex, "Database error while adding to favorites.");
+                return StatusCode(500, "Database error"); // Provide a more specific error message
             }
             catch (Exception ex)
             {
@@ -217,8 +231,31 @@ namespace FogelFormedlingenAB.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ad could not be deleted.");
 			}
 		}
+        [HttpDelete("favourites/{adId}/{accountId}")] 
+        [AllowAnonymous]
+        public async Task<IActionResult> RemoveFromFavourites(int adId, int accountId)
+        {
+            try
+            {
+                var favorite = await database.Favourites.FirstOrDefaultAsync(f => f.AdID == adId && f.AccountID == accountId);
 
-		[HttpGet("/sampledata")]
+                if (favorite == null)
+                {
+                    return NotFound();
+                }
+
+                database.Favourites.Remove(favorite);
+                await database.SaveChangesAsync();
+                return NoContent(); 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while removing favorite.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpGet("/sampledata")]
 		public async Task<IActionResult> AddSampleData()
 		{
 			if (database.Ads.Count() != 0)

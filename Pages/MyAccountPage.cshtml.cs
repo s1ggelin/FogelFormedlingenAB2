@@ -12,13 +12,13 @@ namespace FogelFormedlingenAB.Pages
 {
     public class MyAccountPageModel : PageModel
     {
-        private readonly AppDbContext _database;
+       
         private readonly AccessControl _accessControl;
 
         public MyAccountPageModel(AccessControl accessControl, AppDbContext database)
         {
             _accessControl = accessControl;
-            _database = database;
+           
         }
 
         public List<Ad> MyAds { get; set; } = new List<Ad>();
@@ -31,7 +31,7 @@ namespace FogelFormedlingenAB.Pages
             MyAds = await AdServices.GetAdsByAccountId(accountId);// get owned ads
             AdsILiked = await AdServices.GetLikedAds(accountId); // get liked ads
         }
-       
+
         public async Task<IActionResult> OnPostRemoveAd(int adId)
         {
             var accountId = _accessControl.LoggedInAccountID;
@@ -52,6 +52,20 @@ namespace FogelFormedlingenAB.Pages
             MyAds.Remove(adToRemove); //remove from local list in case
 
             return RedirectToPage("/MyAccountPage");
+        }
+        public async Task<IActionResult> OnPostRemoveFromFavourites(int adId)
+        {
+            var accountId = _accessControl.LoggedInAccountID;
+            var success = await AdServices.RemoveFromFavouritesAsync(adId, accountId); //Call the correct method
+
+            if (!success)
+            {
+                return RedirectToPage("/MyAccountPage");
+            }
+
+            AdsILiked = await AdServices.GetLikedAds(accountId); //Refresh the list of liked ads
+
+            return Page(); // Reload the page to reflect changes
         }
 
         public async Task<IActionResult> OnPostLogOutAccount()

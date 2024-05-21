@@ -239,46 +239,6 @@ namespace FogelFormedlingenAB.Services
 				}
 			}
 		}
-		public static async Task<int> GetTotalPages(string? title = null, int? categoryId = null, int pageSize = 10)
-		{
-			using (HttpClient client = new HttpClient())
-			{
-				try
-				{
-
-					string baseUrl = "https://localhost:5000/";
-					string endpoint = "ads/count"; // points ads/count for calculus
-					var queryParams = new Dictionary<string, string>();
-					if (!string.IsNullOrEmpty(title)) queryParams["title"] = title;
-					if (categoryId.HasValue) queryParams["categoryId"] = categoryId.Value.ToString(); // Pass categoryId
-
-					string fullUrl = QueryHelpers.AddQueryString(baseUrl + endpoint, queryParams);
-
-					HttpResponseMessage response = await client.GetAsync(fullUrl);
-
-					if (response.IsSuccessStatusCode)
-					{
-						string responseBody = await response.Content.ReadAsStringAsync();
-						int totalAds = JsonConvert.DeserializeObject<int>(responseBody);
-						return (int)Math.Ceiling((double)totalAds / pageSize);
-					}
-					else
-					{
-
-
-						Console.WriteLine($"Error fetching ad count");
-
-					}
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine($"An error occurred: {ex.Message}");
-
-				}
-			}
-
-			return 0;
-		}
         public static async Task<bool> AddToFavouritesAsync(Favourite newFavourite)
         {
             using (HttpClient client = new HttpClient())
@@ -316,7 +276,36 @@ namespace FogelFormedlingenAB.Services
                 }
             }
         }
+        public static async Task<bool> RemoveFromFavouritesAsync(int adId, int accountId)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    string baseUrl = "https://localhost:5000/";
+                    string endpoint = $"favourites/{adId}/{accountId}"; 
+                    string fullUrl = baseUrl + endpoint;
 
+                  
+                    HttpResponseMessage response = await client.DeleteAsync(fullUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.StatusCode}");
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    return false;
+                }
+            }
+        }
         public static async Task<List<Ad>> GetLikedAds(int accountId)
         {
             using (var client = new HttpClient())
@@ -376,6 +365,46 @@ namespace FogelFormedlingenAB.Services
 				}
 			}
 			return new List<Category>();
+		}
+		public static async Task<int> GetTotalPages(string? title = null, int? categoryId = null, int pageSize = 10)
+		{
+			using (HttpClient client = new HttpClient())
+			{
+				try
+				{
+
+					string baseUrl = "https://localhost:5000/";
+					string endpoint = "ads/count"; // points ads/count for calculus
+					var queryParams = new Dictionary<string, string>();
+					if (!string.IsNullOrEmpty(title)) queryParams["title"] = title;
+					if (categoryId.HasValue) queryParams["categoryId"] = categoryId.Value.ToString(); // Pass categoryId
+
+					string fullUrl = QueryHelpers.AddQueryString(baseUrl + endpoint, queryParams);
+
+					HttpResponseMessage response = await client.GetAsync(fullUrl);
+
+					if (response.IsSuccessStatusCode)
+					{
+						string responseBody = await response.Content.ReadAsStringAsync();
+						int totalAds = JsonConvert.DeserializeObject<int>(responseBody);
+						return (int)Math.Ceiling((double)totalAds / pageSize);
+					}
+					else
+					{
+
+
+						Console.WriteLine($"Error fetching ad count");
+
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error occurred: {ex.Message}");
+
+				}
+			}
+
+			return 0;
 		}
 	}
 }

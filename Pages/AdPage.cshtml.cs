@@ -16,7 +16,6 @@ namespace FogelFormedlingenAB.Pages
 
         public AdPageModel( AccessControl accessControl)
         {
-           
             _accessControl = accessControl;
         }
         public Ad Ad { get; set; }
