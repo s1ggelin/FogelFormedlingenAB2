@@ -2,6 +2,7 @@
 using FogelFormedlingenAB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -144,7 +145,59 @@ namespace FogelFormedlingenAB.Controllers
 			}
 
 		}
-		[HttpPut("/ads/{adId}")]
+        [HttpPost("favourites")]
+        [AllowAnonymous]
+        public async Task<IActionResult> AddToFavourites([FromBody] Favourite favourite)  
+        {
+            try
+            {
+                // Check if the favorite already exists
+                var existingFavorite = await database.Favourites
+                    .FirstOrDefaultAsync(f => f.AccountID == favourite.AccountID && f.AdID == favourite.AdID);
+
+                if (existingFavorite != null)
+                {
+                    return Conflict("This ad is already in your favorites."); // HTTP 409 Conflict
+                }
+
+                // If favorite doesn't exist, add it
+                database.Favourites.Add(favourite);
+                await database.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(GetLikedAds), new { accountId = favourite.AccountID }, favourite); // HTTP 201 Created
+            }
+            catch (DbUpdateException ex) // Catch specific database exceptions
+            {
+                _logger.LogError(ex, "Database error while adding to favorites.");
+                return StatusCode(500, "Database error"); // Provide a more specific error message
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding to favorites.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+        [HttpGet("favourites/ads/{accountId}")] 
+        [AllowAnonymous]
+        public IActionResult GetLikedAds(int accountId)
+        {
+            try
+            {
+                var likedAds = database.Favourites
+                   .Where(f => f.AccountID == accountId)
+                   .Include(f => f.Ad) 
+                   .Select(f => f.Ad)
+                   .ToList();
+
+                return Ok(likedAds);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while getting liked ads.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+        [HttpPut("/ads/{adId}")]
 		[AllowAnonymous]
 		public async Task<IActionResult> UpdateAd(Ad ad)
 		{
@@ -205,8 +258,31 @@ namespace FogelFormedlingenAB.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ad could not be deleted.");
 			}
 		}
+        [HttpDelete("favourites/{adId}/{accountId}")] 
+        [AllowAnonymous]
+        public async Task<IActionResult> RemoveFromFavourites(int adId, int accountId)
+        {
+            try
+            {
+                var favorite = await database.Favourites.FirstOrDefaultAsync(f => f.AdID == adId && f.AccountID == accountId);
 
-		[HttpGet("/sampledata")]
+                if (favorite == null)
+                {
+                    return NotFound();
+                }
+
+                database.Favourites.Remove(favorite);
+                await database.SaveChangesAsync();
+                return NoContent(); 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while removing favorite.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpGet("/sampledata")]
 		public async Task<IActionResult> AddSampleData()
 		{
 			if (database.Ads.Count() != 0)
@@ -246,7 +322,10 @@ namespace FogelFormedlingenAB.Controllers
 
 			return NoContent();
 		}
-		private class Helpers
+        
+
+
+        private class Helpers
 		{
 
 			public static async Task<List<string>> GetPixabayPics(string query, int resultAmount)

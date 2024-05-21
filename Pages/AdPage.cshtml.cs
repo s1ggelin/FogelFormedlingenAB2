@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -11,8 +12,16 @@ namespace FogelFormedlingenAB.Pages
 {
     public class AdPageModel : PageModel
     {
-        private readonly AccessControl _accessControl; // Assuming AccessControl is used for managing logged-in users
+
+        private readonly AdServices _adServices;
+        private readonly AccessControl _accessControl; // Inject AccessControl service
+
+        public AdPageModel( AccessControl accessControl)
+        {
+            _accessControl = accessControl;
+        }
         public Ad Ad { get; set; }
+        public Favourite Favourite { get; set; }
         public List<Category> Categories { get; set; }
         public string CategoryName { get; set; } // To store the category name
         public AdPageModel(AccessControl accessControl)
@@ -32,6 +41,22 @@ namespace FogelFormedlingenAB.Pages
             {
                 RedirectToPage("/NotFound");
             }
+        }
+        public async Task<IActionResult> OnPostAddToFavourites(int adId)
+        {
+            var accountId = _accessControl.LoggedInAccountID;
+            var newFavorite = new Favourite { AccountID = accountId, AdID = adId };
+
+            if (await AdServices.AddToFavouritesAsync(newFavorite)) 
+            {
+                TempData["SuccessMessage"] = "Ad added to your favourites!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to add ad to favourites. Please try again later.";
+            }
+
+            return RedirectToPage("/AdPage", new { adid = adId });
         }
 
         public async Task<IActionResult> OnPostAsync(int adId)
@@ -70,6 +95,7 @@ namespace FogelFormedlingenAB.Pages
                 return RedirectToPage("/Error");
             }
         }
+
 
     }
 }

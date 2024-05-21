@@ -6,14 +6,14 @@
 }
 <h1 class="display-4">Ad Details</h1>
 
+
+
 @if (Model.Ad != null)
 {
     <div id="ad-details" class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <div class="product-image-container">
-                    <img src="@Model.Ad.ImageUrl" alt="@Model.Ad.Title" class="ad-image img-fluid" />
-                </div>
+                <img src="@Model.Ad.ImageUrl" alt="@Model.Ad.Title" class="ad-image img-fluid" />
             </div>
             <div class="col-md-6">
                 <h2>@Model.Ad.Title</h2>
@@ -25,6 +25,13 @@
                     <li class="list-group-item">Beskrivning: @Model.Ad.Description</li>
                     <li class="list-group-item">Pris: <strong>@Model.Ad.Price.ToString("C0")</strong></li>
                 </ul>
+
+                @* ❤ Add to Favorites Button *@
+                <form method="post" asp-page-handler="AddToFavourites" asp-route-adId="@Model.Ad.ID">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-heart"></i> ❤
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -39,3 +46,4 @@ else
 {
     <p>Ad not found.</p>
 }
+
