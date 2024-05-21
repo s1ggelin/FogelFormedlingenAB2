@@ -20,5 +20,7 @@ namespace FogelFormedlingenAB.Models
 		public List<Favourite>? Favourites { get; set; }
 		public List<Order>? Orders { get; set; }
 		public List<Ad>? Ads { get; set; }
+		public List<int>? Ratings { get; set; }	= new List<int>();
+
 	}
 }
