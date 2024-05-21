@@ -60,6 +60,38 @@ namespace FogelFormedlingenAB.Services
                
             }
         }
+        public static async Task<bool> CreateOrder(Order order)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string baseUrl = "https://localhost:5000";
+                    string endpoint = "/order"; 
+                    string fullUrl = baseUrl + endpoint;
+
+                    var json = JsonConvert.SerializeObject(order);
+                    var data = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync(fullUrl, data);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.StatusCode}");
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    return false;
+                }
+            }
+        }
         public static async Task<List<Ad>> GetAdsByAccountId(int accountId)
         {
             using (HttpClient client = new HttpClient())

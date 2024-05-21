@@ -54,7 +54,6 @@ namespace FogelFormedlingenAB.Pages
                 {
                     Ad.CategoryID = selectedCategory.ID;
                 }
-
             }
 
             Ad.ImageUrl = ImageUrl; // Set ImageUrl before creating the ad
@@ -70,8 +69,6 @@ namespace FogelFormedlingenAB.Pages
             }
 
             return RedirectToPage("/Index");
-
-
 
         }
 

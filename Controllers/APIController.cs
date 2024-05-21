@@ -178,6 +178,24 @@ namespace FogelFormedlingenAB.Controllers
             return NoContent();
             
         }
+        [HttpPost("/order")]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateOrder(Order order)
+        {
+            try
+            {
+                database.Orders.Add(order);
+                await database.SaveChangesAsync();
+
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(StatusCodes.Status500InternalServerError, "Could not create order.");
+            }
+        }
+        
         [HttpDelete("/ads/{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> DeleteAd(int id)
