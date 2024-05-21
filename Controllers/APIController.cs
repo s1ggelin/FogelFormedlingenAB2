@@ -77,7 +77,10 @@ namespace FogelFormedlingenAB.Controllers
             var orders = database.Orders
                 .Where(a => a.AccountId == accountId)
                 .ToList();
-
+            foreach (var order in orders)
+            {
+                order.Ad = database.Ads.Where(a => a.ID == order.AdID).First();
+            }
             return orders;
 
         }
