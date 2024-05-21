@@ -28,13 +28,14 @@ namespace FogelFormedlingenAB.Pages
         public bool RatingFormVisible { get; set; } 
         public int Rating { get; set; }
         public List<int> Ratings { get; set; }
+        [BindProperty]
         public Account SellerAccount { get; set; }
 
         public async Task OnGetAsync(int adId)
         {
             Ad = await AdServices.GetAd(adId);
             Categories = await AdServices.GetCategories();
-            SellerAccount = database.Accounts.First(c => c.ID == Ad.AccountID);
+            SellerAccount = database.Accounts.FirstOrDefault(c => c.ID == Ad.AccountID);
             
 
             if (Ad != null)
@@ -75,9 +76,8 @@ namespace FogelFormedlingenAB.Pages
                 {
                     return RedirectToPage("/NotFound");
                 }
+                SellerAccount = database.Accounts.FirstOrDefault(c => c.ID == Ad.AccountID);
 
-                
-                
                 if (SellerAccount != null)
                 {
                     SellerAccount.Ratings.Add(rating);
