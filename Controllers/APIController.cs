@@ -39,11 +39,11 @@ namespace FogelFormedlingenAB.Controllers
 					// Directly filter by CategoryID (no need to fetch the category by name)
 					query = query.Where(a => a.CategoryID == categoryId.Value);
 				}
+				query = query.Where(a => a.IsActive == true);
 
 				var totalAds = query.Count();
 				var totalPages = (int)Math.Ceiling((double)totalAds / pageSize);
 				pageNumber = Math.Max(1, Math.Min(pageNumber, totalPages));
-
 				var ads = query
 					.Skip((pageNumber - 1) * pageSize)
 					.Take(pageSize)
@@ -86,7 +86,9 @@ namespace FogelFormedlingenAB.Controllers
 					query = query.Where(a => a.CategoryID == categoryId);
 				}
 
-				var totalAds = query.Count();
+                query = query.Where(a => a.IsActive == true);
+
+                var totalAds = query.Count();
 				return totalAds;
 			}
 			catch (Exception ex)
