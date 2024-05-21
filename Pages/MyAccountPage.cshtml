@@ -100,9 +100,9 @@
     </div>
     <h3>Rating:</h3>
     <div id="starRating">
-        @for (int i = 0; i <= 5; i++)
+        @for (int i = 0; i < Model.AverageRating; i++)
         {
-            <span class="star @(i <= Model.AverageRating ? "filled" : "")">&#9733;</span>
+            <span class="star">&#9733;</span>
         }
     </div>
     <p>Average Rating: @Model.AverageRating</p>
