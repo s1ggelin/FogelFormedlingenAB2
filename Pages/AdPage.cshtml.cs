@@ -12,22 +12,30 @@ namespace FogelFormedlingenAB.Pages
 {
     public class AdPageModel : PageModel
     {
-
+        private readonly AppDbContext database;
         private readonly AccessControl _accessControl; // Inject AccessControl service
 
-        public AdPageModel( AccessControl accessControl)
+        public AdPageModel( AccessControl accessControl, AppDbContext database)
         {
             _accessControl = accessControl;
+            this.database = database;
         }
         public Ad Ad { get; set; }
         public Favourite Favourite { get; set; }
         public List<Category> Categories { get; set; }
         public string CategoryName { get; set; } // To store the category name
-      
+
+        public bool RatingFormVisible { get; set; } 
+        public int Rating { get; set; }
+        public List<int> Ratings { get; set; }
+        public Account SellerAccount { get; set; }
+
         public async Task OnGetAsync(int adId)
         {
             Ad = await AdServices.GetAd(adId);
             Categories = await AdServices.GetCategories();
+            SellerAccount = database.Accounts.First(c => c.ID == Ad.AccountID);
+            
 
             if (Ad != null)
             {
@@ -55,8 +63,10 @@ namespace FogelFormedlingenAB.Pages
             return RedirectToPage("/AdPage", new { adid = adId });
         }
 
-        public async Task<IActionResult> OnPostAsync(int adId)
+        public async Task<IActionResult> OnPostAsync(int adId, int rating)
         {
+            
+
             try
             {
                 Ad = await AdServices.GetAd(adId);
@@ -66,6 +76,14 @@ namespace FogelFormedlingenAB.Pages
                     return RedirectToPage("/NotFound");
                 }
 
+                
+                
+                if (SellerAccount != null)
+                {
+                    SellerAccount.Ratings.Add(rating);
+                    database.SaveChanges();
+                }
+                
                 // Mark the ad as inactive
                 Ad.IsActive = false;
 
@@ -92,6 +110,11 @@ namespace FogelFormedlingenAB.Pages
             }
         }
 
+        public IActionResult OnPostToggleRatingForm()
+        {
+            RatingFormVisible = !RatingFormVisible;
+            return Page();
+        }
 
     }
 }

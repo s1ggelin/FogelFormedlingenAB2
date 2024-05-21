@@ -53,6 +53,9 @@ namespace FogelFormedlingenAB.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("Ratings")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Accounts");
@@ -237,7 +240,7 @@ namespace FogelFormedlingenAB.Migrations
 
             modelBuilder.Entity("FogelFormedlingenAB.Models.Favourite", b =>
                 {
-                    b.HasOne("FogelFormedlingenAB.Models.Account", "Account")
+                    b.HasOne("FogelFormedlingenAB.Models.Account", null)
                         .WithMany("Favourites")
                         .HasForeignKey("AccountID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -252,8 +255,6 @@ namespace FogelFormedlingenAB.Migrations
                     b.HasOne("FogelFormedlingenAB.Models.Ad", null)
                         .WithOne("Favourite")
                         .HasForeignKey("FogelFormedlingenAB.Models.Favourite", "AdID1");
-
-                    b.Navigation("Account");
 
                     b.Navigation("Ad");
                 });
