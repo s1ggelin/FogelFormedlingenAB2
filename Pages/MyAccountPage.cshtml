@@ -28,7 +28,9 @@
                     {
                         <li class="list-group-item">
                             <div class="d-flex justify-content-between">
-                                <h3>@ad.Title</h3>
+                                <h3>
+                                    <a asp-page="/AdPage" asp-route-adId="@ad.ID">@ad.Title</a>
+                                </h3>
                                 <form method="post" asp-page-handler="RemoveAd" asp-route-adId="@ad.ID">
                                     <button type="submit" class="btn btn-danger">Delete Ad</button>
                                 </form>
@@ -54,7 +56,9 @@
                     @foreach (var ad in Model.AdsILiked)
                     {
                         <li class="list-group-item">
-                            <h3>@ad.Title</h3>
+                            <h3>
+                                <a asp-page="/AdPage" asp-route-adId="@ad.ID">@ad.Title</a>
+                            </h3>
                             <p>@ad.Description</p>
                             <form method="post" asp-page-handler="RemoveFromFavourites" asp-route-adId="@ad.ID">
                                 <button type="submit" class="btn btn-danger">Remove from Favourites</button>
