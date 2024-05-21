@@ -282,7 +282,7 @@ namespace FogelFormedlingenAB.Services
                 try
                 {
                     string baseUrl = "https://localhost:5000";
-                    string endpoint = "/favourites"; 
+                    string endpoint = "/api/favourites"; 
                     string fullUrl = baseUrl + endpoint;
 
               
@@ -319,7 +319,7 @@ namespace FogelFormedlingenAB.Services
                 try
                 {
                     string baseUrl = "https://localhost:5000/";
-                    string endpoint = $"favourites/{adId}/{accountId}"; 
+                    string endpoint = $"api/favourites/{adId}/{accountId}"; 
                     string fullUrl = baseUrl + endpoint;
 
                   
@@ -349,7 +349,7 @@ namespace FogelFormedlingenAB.Services
                 try
                 {
                     string baseUrl = "https://localhost:5000/";
-                    string endpoint = $"favourites/ads/{accountId}"; 
+                    string endpoint = $"api/favourites/ads/{accountId}"; 
                     string fullUrl = baseUrl + endpoint;
 
                     var response = await client.GetAsync(fullUrl);

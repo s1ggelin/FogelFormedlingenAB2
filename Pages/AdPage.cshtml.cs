@@ -13,7 +13,6 @@ namespace FogelFormedlingenAB.Pages
     public class AdPageModel : PageModel
     {
 
-        private readonly AdServices _adServices;
         private readonly AccessControl _accessControl; // Inject AccessControl service
 
         public AdPageModel( AccessControl accessControl)
@@ -24,10 +23,7 @@ namespace FogelFormedlingenAB.Pages
         public Favourite Favourite { get; set; }
         public List<Category> Categories { get; set; }
         public string CategoryName { get; set; } // To store the category name
-        public AdPageModel(AccessControl accessControl)
-        {
-            _accessControl = accessControl;
-        }
+      
         public async Task OnGetAsync(int adId)
         {
             Ad = await AdServices.GetAd(adId);
