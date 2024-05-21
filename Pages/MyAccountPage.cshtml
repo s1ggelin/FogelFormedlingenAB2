@@ -49,6 +49,31 @@
 
     <div class="card my-4">
         <div class="card-body">
+            <h2 class="card-title">Products I've bought</h2>
+            @if (Model.AdsIOrderd.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var order in Model.AdsIOrderd)
+                    {
+                        <li class="list-group-item">
+                            <h3>
+                                <a asp-page="/AdPage" asp-route-adId="@order.AdID">@order.Ad.Title</a>
+                            </h3>
+                            <p>@order.Ad.Description</p>
+                            <p>@order.BoughtDate.ToString("MMMM dd, yyyy")</p>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>You have not liked any ads!</p>
+            }
+        </div>
+    </div>
+
+    <div class="card my-4">
+        <div class="card-body">
             <h2 class="card-title">Ads I've Liked</h2>
             @if (Model.AdsILiked.Any())
             {
