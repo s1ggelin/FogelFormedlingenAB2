@@ -23,13 +23,14 @@ namespace FogelFormedlingenAB.Pages
 
         public List<Ad> MyAds { get; set; } = new List<Ad>();
         public List<Ad> AdsILiked { get; set; } = new List<Ad>(); 
-
+        public List<Order> AdsIOrderd { get; set; }
         public async Task OnGet()
         {
             var accountId = _accessControl.LoggedInAccountID;
 
             MyAds = await AdServices.GetAdsByAccountId(accountId);// get owned ads
             AdsILiked = await AdServices.GetLikedAds(accountId); // get liked ads
+            AdsIOrderd = await AdServices.GetOrderedAds(accountId); // get liked ads
         }
 
         public async Task<IActionResult> OnPostRemoveAd(int adId)
