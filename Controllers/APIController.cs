@@ -211,9 +211,29 @@ namespace FogelFormedlingenAB.Controllers
 				_logger.LogError(ex.ToString());
 				return StatusCode(StatusCodes.Status500InternalServerError, "Could not update ad.");
 			}
-			return NoContent();
 
-		}
+            return NoContent();
+            
+        }
+        [HttpPost("/order")]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateOrder(Order order)
+        {
+            try
+            {
+                database.Ads.Update(order.Ad);
+                database.Orders.Add(order);
+                await database.SaveChangesAsync();
+
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(StatusCodes.Status500InternalServerError, "Could not create order.");
+            }
+        }
+        
 		[HttpDelete("/ads/{adId}")]
 		[AllowAnonymous]
 		public async Task<IActionResult> DeleteAd(int adId)
@@ -221,12 +241,19 @@ namespace FogelFormedlingenAB.Controllers
 			try
 			{
 				var ad = await database.Ads.FindAsync(adId);
+				if (ad == null)
+				{
+					return NotFound();
+				}
+
 				database.Ads.Remove(ad);
 				await database.SaveChangesAsync();
-				return NoContent();
+
+				return Ok("Ad was deleted");
 			}
 			catch (Exception ex)
 			{
+
 				_logger.LogError(ex.ToString());
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ad could not be deleted.");
 			}
