@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace FogelFormedlingenAB.Controllers
 {
-	[Route("")]
+	[Route("/api")]
 	[ApiController]
 	public class APIController : ControllerBase
 	{
