@@ -45,6 +45,7 @@ namespace FogelFormedlingenAB.Controllers
 				var totalPages = (int)Math.Ceiling((double)totalAds / pageSize);
 				pageNumber = Math.Max(1, Math.Min(pageNumber, totalPages));
 				var ads = query
+					.OrderByDescending(a=> a.StartDate)
 					.Skip((pageNumber - 1) * pageSize)
 					.Take(pageSize)
 					.ToList();
