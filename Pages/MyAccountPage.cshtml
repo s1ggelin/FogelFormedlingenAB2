@@ -28,7 +28,9 @@
                     {
                         <li class="list-group-item">
                             <div class="d-flex justify-content-between">
-                                <h3>@ad.Title</h3>
+                                <h3>
+                                    <a asp-page="/AdPage" asp-route-adId="@ad.ID">@ad.Title</a>
+                                </h3>
                                 <form method="post" asp-page-handler="RemoveAd" asp-route-adId="@ad.ID">
                                     <button type="submit" class="btn btn-danger">Delete Ad</button>
                                 </form>
@@ -47,6 +49,31 @@
 
     <div class="card my-4">
         <div class="card-body">
+            <h2 class="card-title">Products I've bought</h2>
+            @if (Model.AdsIOrderd.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var order in Model.AdsIOrderd)
+                    {
+                        <li class="list-group-item">
+                            <h3>
+                                <a asp-page="/AdPage" asp-route-adId="@order.AdID">@order.Ad.Title</a>
+                            </h3>
+                            <p>@order.Ad.Description</p>
+                            <p>@order.BoughtDate.ToString("MMMM dd, yyyy")</p>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>You have not liked any ads!</p>
+            }
+        </div>
+    </div>
+
+    <div class="card my-4">
+        <div class="card-body">
             <h2 class="card-title">Ads I've Liked</h2>
             @if (Model.AdsILiked.Any())
             {
@@ -54,7 +81,9 @@
                     @foreach (var ad in Model.AdsILiked)
                     {
                         <li class="list-group-item">
-                            <h3>@ad.Title</h3>
+                            <h3>
+                                <a asp-page="/AdPage" asp-route-adId="@ad.ID">@ad.Title</a>
+                            </h3>
                             <p>@ad.Description</p>
                             <form method="post" asp-page-handler="RemoveFromFavourites" asp-route-adId="@ad.ID">
                                 <button type="submit" class="btn btn-danger">Remove from Favourites</button>
@@ -69,6 +98,14 @@
             }
         </div>
     </div>
+    <h3>Rating:</h3>
+    <div id="starRating">
+        @for (int i = 0; i < Model.AverageRating; i++)
+        {
+            <span class="star">&#9733;</span>
+        }
+    </div>
+    <p>Average Rating: @Model.AverageRating</p>
     </div>
    
 </div>

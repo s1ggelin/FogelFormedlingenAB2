@@ -12,24 +12,31 @@ namespace FogelFormedlingenAB.Pages
 {
     public class MyAccountPageModel : PageModel
     {
-       
+        private readonly AppDbContext database;
         private readonly AccessControl _accessControl;
 
         public MyAccountPageModel(AccessControl accessControl, AppDbContext database)
         {
             _accessControl = accessControl;
-           
+            this.database = database;
         }
 
         public List<Ad> MyAds { get; set; } = new List<Ad>();
         public List<Ad> AdsILiked { get; set; } = new List<Ad>(); 
+         public List<Order> AdsIOrderd { get; set; }
+        public double AverageRating { get; set; }
+       
 
         public async Task OnGet()
         {
             var accountId = _accessControl.LoggedInAccountID;
+            var account = database.Accounts.FirstOrDefault(c => c.ID == accountId);
+            double averageRating = account.Ratings.Any() ? account.Ratings.Average() : 0;
+            AverageRating = averageRating;
 
             MyAds = await AdServices.GetAdsByAccountId(accountId);// get owned ads
             AdsILiked = await AdServices.GetLikedAds(accountId); // get liked ads
+            AdsIOrderd = await AdServices.GetOrderedAds(accountId); // get liked ads
         }
 
         public async Task<IActionResult> OnPostRemoveAd(int adId)
